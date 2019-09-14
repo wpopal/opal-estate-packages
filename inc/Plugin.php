@@ -1,8 +1,8 @@
 <?php
-
 namespace Opal_Packages;
 
-use Opal_Packages\Admin\Settings;
+use Opal_Packages\Admin\Metabox;
+use Opal_Packages\Core\Product_Type;
 
 /**
  * Set up and initialize
@@ -31,7 +31,14 @@ class Plugin {
 	 * Actions setup
 	 */
 	public function __construct() {
+		$this->register_admin();
+	}
 
+	/**
+	 * Register admin.
+	 */
+	public function register_admin() {
+		new Metabox();
 	}
 
 	/**
