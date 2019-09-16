@@ -36,6 +36,80 @@ function opalestate_packages_add_product_type() {
 		// 	return false;
 		// }
 
+		public function get_package_maximum_purchased() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_maximum_purchased', true );
+
+			return ! empty( $value ) ? $value : -1;
+		}
+
+		public function is_enable_expired() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_enable_expired', true );
+
+			if ( $value ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public function get_package_duration() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_duration', true );
+
+			return ! empty( $value ) ? absint( $value ) : 0;
+		}
+
+		public function get_package_duration_unit() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_duration_unit', true );
+
+			if ( ! empty( $value ) || ! in_array( $value, [ 'day', 'week', 'month', 'year' ] ) ) {
+				return 'day';
+			}
+
+			return $value;
+		}
+
+		public function is_highlighted() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_hightlighted', true );
+
+			if ( $value ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public function is_package_recurring() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_recurring', true );
+
+			if ( $value ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public function get_package_listings() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_package_listings', true );
+
+			return ! empty( $value ) ? absint( $value ) : 0;
+		}
+
+		public function is_unlimited_listings() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_unlimited_listings', true );
+
+			if ( $value ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public function get_package_featured_listings() {
+			$value = get_post_meta( $this->get_id(), 'opalestate_package_package_featured_listings', true );
+
+			return ! empty( $value ) ? absint( $value ) : 0;
+		}
+
 		public function add_to_cart_url() {
 			$url = $this->is_in_stock() ? esc_url( remove_query_arg( 'added-to-cart', add_query_arg( 'add-to-cart', $this->id, home_url() ) ) ) : get_permalink( $this->id );
 
