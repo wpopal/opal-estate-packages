@@ -1,7 +1,7 @@
 <?php
-namespace Opal_Estate_Packages;
+namespace Opalestate_Packages;
 
-use Opal_Estate_Packages\Admin\Metabox;
+use Opalestate_Packages\Admin\Metabox;
 
 /**
  * Set up and initialize
@@ -51,6 +51,6 @@ class Plugin {
 	 * Translations.
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'opal-packages', false, 'opal-packages/languages' );
+		load_plugin_textdomain( 'opalestate-packages', false, 'opal-estate-packages/languages' );
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * The loader file.
  *
- * @package Opal_Estate_Packages
+ * @package Opalestate_Packages
  */
 
 /**
@@ -17,6 +17,6 @@ require_once trailingslashit( __DIR__ ) . 'inc/functions.php';
 require_once trailingslashit( __DIR__ ) . 'inc/Plugin.php';
 
 /**
- * Alias the class "Opal_Estate_Packages\Plugin" to "Opal_Estate_Packages".
+ * Alias the class "Opalestate_Packages\Plugin" to "Opalestate_Packages".
  */
-class_alias( \Opal_Estate_Packages\Plugin::class, 'Opal_Estate_Packages', false );
+class_alias( \Opalestate_Packages\Plugin::class, 'Opalestate_Packages', false );

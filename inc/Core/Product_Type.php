@@ -1,5 +1,5 @@
 <?php
-namespace Opal_Estate_Packages\Core;
+namespace Opalestate_Packages\Core;
 
 class Product_Type extends \WC_Product {
 	/**
@@ -10,7 +10,7 @@ class Product_Type extends \WC_Product {
 	 * @param int|\WC_Product|object $product Product to init.
 	 */
 	public function __construct( $product ) {
-		$this->product_type = 'opal_package';
+		$this->product_type = 'opalestate_package';
 		parent::__construct( $product );
 	}
 
@@ -113,7 +113,7 @@ class Product_Type extends \WC_Product {
 
 	public function get_package_interval() {
 
-		$value = get_post_meta( $this->id, '_opal_package_interval', true );
+		$value = get_post_meta( $this->id, '_opalestate_package_interval', true );
 		if ( ! empty( $value ) ) {
 			return $value;
 		}
@@ -122,7 +122,7 @@ class Product_Type extends \WC_Product {
 	}
 
 	public function get_package_interval_unit() {
-		$value = get_post_meta( $this->id, '_opal_package_interval_unit', true );
+		$value = get_post_meta( $this->id, '_opalestate_package_interval_unit', true );
 		if ( ! empty( $value ) ) {
 			return $value;
 		}
