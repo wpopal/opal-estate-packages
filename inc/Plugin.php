@@ -1,8 +1,7 @@
 <?php
-namespace Opal_Packages;
+namespace Opal_Estate_Packages;
 
-use Opal_Packages\Admin\Metabox;
-use Opal_Packages\Core\Product_Type;
+use Opal_Estate_Packages\Admin\Metabox;
 
 /**
  * Set up and initialize

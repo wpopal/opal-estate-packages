@@ -1,6 +1,6 @@
 {
-    "name": "opalpackages",
-    "description": "Opal Packages",
+    "name": "Opal Estate Packages",
+    "description": "Opal Estate Packages plugin",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "minimum-stability": "stable",
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Opal_Packages\\": "inc/"
+            "Opal_Estate_Packages\\": "inc/"
         }
     },
     "config": {

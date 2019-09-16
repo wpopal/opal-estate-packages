@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6a19f7fd320080d94dae258efb0f6a81
+class ComposerStaticInit637c7c3af1418f9f2ceae81892ee7c35
 {
     public static $prefixLengthsPsr4 = array (
         'O' => 
         array (
-            'Opal_Packages\\' => 14,
+            'Opal_Estate_Packages\\' => 21,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Opal_Packages\\' => 
+        'Opal_Estate_Packages\\' => 
         array (
             0 => __DIR__ . '/../..' . '/inc',
         ),
@@ -23,8 +23,8 @@ class ComposerStaticInit6a19f7fd320080d94dae258efb0f6a81
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6a19f7fd320080d94dae258efb0f6a81::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6a19f7fd320080d94dae258efb0f6a81::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit637c7c3af1418f9f2ceae81892ee7c35::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit637c7c3af1418f9f2ceae81892ee7c35::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }

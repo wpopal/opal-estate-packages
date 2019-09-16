@@ -1,5 +1,5 @@
 <?php
-namespace Opal_Packages\Core;
+namespace Opal_Estate_Packages\Core;
 
 class Product_Type extends \WC_Product {
 	/**
