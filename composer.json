@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Opal_Estate_Packages\\": "inc/"
+            "Opalestate_Packages\\": "inc/"
         }
     },
     "config": {

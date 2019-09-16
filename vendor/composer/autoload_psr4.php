@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Opal_Estate_Packages\\' => array($baseDir . '/inc'),
+    'Opalestate_Packages\\' => array($baseDir . '/inc'),
 );
