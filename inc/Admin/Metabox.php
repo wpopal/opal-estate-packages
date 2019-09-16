@@ -10,7 +10,10 @@ class Metabox {
 			add_filter( 'product_type_selector', [ $this, 'product_type_selector' ] );
 			add_action( 'woocommerce_product_options_general_product_data', [ $this, 'product_data', ] );
 			add_action( 'woocommerce_process_product_meta', [ $this, 'save_product_data' ] );
+			add_filter( 'woocommerce_product_data_tabs', array( $this, 'product_data_tabs' ) );
 		}
+
+		add_action( 'after_switch_theme', array( $this, 'switch_theme_hook' ) );
 	}
 
 	/**
@@ -179,5 +182,31 @@ class Metabox {
 		}
 
 		do_action( 'opalestate_package_save_data', $post_id );
+	}
+
+	public function product_data_tabs( $product_data_tabs = [] ) {
+		if ( empty( $product_data_tabs ) ) {
+			return;
+		}
+
+		if ( isset( $product_data_tabs['shipping'] ) && isset( $product_data_tabs['shipping']['class'] ) ) {
+			$product_data_tabs['shipping']['class'][] = 'hide_if_opalestate_package';
+		}
+		if ( isset( $product_data_tabs['linked_product'] ) && isset( $product_data_tabs['linked_product']['class'] ) ) {
+			$product_data_tabs['linked_product']['class'][] = 'hide_if_opalestate_package';
+		}
+		if ( isset( $product_data_tabs['attribute'] ) && isset( $product_data_tabs['attribute']['class'] ) ) {
+			$product_data_tabs['attribute']['class'][] = 'hide_if_opalestate_package';
+		}
+
+		return $product_data_tabs;
+	}
+
+	public function switch_theme_hook( $newname = '', $newtheme = '' ) {
+		if ( defined( 'WOOCOMMERCE_VERSION' ) ) {
+			if ( ! get_term_by( 'slug', sanitize_title( 'opalestate_package' ), 'product_type' ) ) {
+				wp_insert_term( 'opalestate_package', 'product_type' );
+			}
+		}
 	}
 }
