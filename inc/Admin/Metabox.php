@@ -14,6 +14,8 @@ class Metabox {
 	}
 
 	/**
+	 * Add product type selector.
+	 *
 	 * @param $types
 	 * @return mixed
 	 */
@@ -72,13 +74,26 @@ class Metabox {
 				],
 			] );
 
+			woocommerce_wp_checkbox( [
+				'id'          => '_opal_package_hightlighted',
+				'label'       => esc_html__( 'Highlighted', 'opal-packages' ),
+				'value'       => get_post_meta( $post->ID, '_opal_package_hightlighted', true ),
+				'description' => esc_html__( 'Highlighted?', 'opal-packages' ),
+			] );
+
+			woocommerce_wp_checkbox( [
+				'id'          => '_opal_package_recurring',
+				'label'       => esc_html__( 'Recurring', 'opal-packages' ),
+				'value'       => get_post_meta( $post->ID, '_opal_package_recurring', true ),
+				'description' => esc_html__( ' Do you want enable recurring?', 'opal-packages' ),
+			] );
+
 			$custom_attributes = get_post_meta( $post->ID, '_opal_package_unlimited_listings', true ) ? 'disabled' : '';
 			woocommerce_wp_text_input( [
 				'id'                => '_opal_package_listings',
 				'label'             => esc_html__( 'Number of listings', 'opal-packages' ),
 				'description'       => esc_html__( 'The number of listings an user can post with this package. If not set it will be unlimited.', 'opal-packages' ),
 				'value'             => max( get_post_meta( $post->ID, '_opal_package_listings', true ), 0 ),
-				'placeholder'       => esc_html__( 'No job posting', 'opal-packages' ),
 				'type'              => 'number',
 				'desc_tip'          => true,
 				'custom_attributes' => [
@@ -97,14 +112,14 @@ class Metabox {
 
 			woocommerce_wp_text_input( [
 				'id'                => '_opal_package_featured_listings',
-				'label'             => esc_html__( 'Number Of Featured listings', 'opal-packages' ),
+				'label'             => esc_html__( 'Number of Featured listings', 'opal-packages' ),
 				'description'       => esc_html__( 'Number of listings can make featured with this package.', 'opal-packages' ),
 				'value'             => max( get_post_meta( $post->ID, '_opal_package_featured_listings', true ), -1 ),
 				'placeholder'       => '',
 				'desc_tip'          => true,
 				'type'              => 'number',
 				'custom_attributes' => [
-					'min'  => '0',
+					'min'  => '-1',
 					'step' => '1',
 				],
 			] );
@@ -127,5 +142,9 @@ class Metabox {
 			?>
         </div>
 		<?php
+	}
+
+	public function save_product_data() {
+
 	}
 }
