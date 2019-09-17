@@ -3,6 +3,10 @@
  * Register product type.
  */
 function opalestate_packages_add_product_type() {
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		return;
+	}
+
 	class WC_Product_Opalestate_Package extends WC_Product {
 		/**
 		 * Get the product if ID is passed, otherwise the product is new and empty.
