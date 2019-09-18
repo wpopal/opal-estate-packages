@@ -50,7 +50,8 @@ if ( version_compare( phpversion(), '5.6', '<' ) ) {
 	 * Adds a message for outdate PHP version.
 	 */
 	function opalestate_packages_php_upgrade_notice() {
-		$message = sprintf( esc_html__( 'Opal Packages requires at least PHP version 5.6 to work, you are running version %s. Please contact to your administrator to upgrade PHP version!', 'opal-packages'
+		$message = sprintf( esc_html__( 'Opal Packages requires at least PHP version 5.6 to work, you are running version %s. Please contact to your administrator to upgrade PHP version!',
+			'opal-packages'
 		),
 			phpversion() );
 		printf( '<div class="error"><p>%s</p></div>', $message ); // WPCS: XSS OK.
@@ -68,25 +69,47 @@ if ( defined( 'OPALESTATE_PACKAGES_VERSION' ) ) {
 }
 
 define( 'OPALESTATE_PACKAGES_VERSION', '1.0.0' );
+define( 'OPALESTATE_PACKAGES_USER_PREFIX', 'opalmb_' );
 define( 'OPALESTATE_PACKAGES_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OPALESTATE_PACKAGES_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /**
- * Admin notice: Require WooCommerce.
+ * Admin notice: Require OpalEstate && WooCommerce.
  */
 function opalestate_packages_admin_notice() {
+	if ( ! class_exists( 'OpalEstate' ) ) {
+		echo '<div class="error">';
+		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only with the <strong>Opal Estate Pro</strong> plugin.</p>', 'opal-packages' );
+		echo '</div>';
+	}
+
 	if ( ! class_exists( 'WooCommerce' ) ) {
 		echo '<div class="error">';
 		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only with the <strong>WooCommerce</strong> plugin.</p>', 'opal-packages' );
 		echo '</div>';
 	}
+
+	if ( class_exists( 'OpalMembership' ) ) {
+		echo '<div class="error">';
+		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only without the <strong>OpalMembership</strong> plugin. You should only choose 1 of 2.</p>', 'opal-packages' );
+		echo '</div>';
+	}
 }
 
-// Include the loader.
-require_once dirname( __FILE__ ) . '/loader.php';
+/**
+ * Is activatable?
+ *
+ * @return bool
+ */
+function is_opalestate_packages_activatable() {
+	return class_exists( 'OpalEstate' ) && class_exists( 'WooCommerce' ) && ! class_exists( 'OpalMembership' );
+}
 
 add_action( 'plugins_loaded', function () {
-	if ( class_exists( 'WooCommerce' ) ) {
+	if ( is_opalestate_packages_activatable() ) {
+		// Include the loader.
+		require_once dirname( __FILE__ ) . '/loader.php';
+
 		$GLOBALS['opalestate_packages'] = Opalestate_Packages::get_instance();
 	}
 	add_action( 'admin_notices', 'opalestate_packages_admin_notice', 4 );
