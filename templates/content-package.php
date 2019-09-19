@@ -10,7 +10,6 @@ if ( has_post_thumbnail() ) {
 $pack_listings           = $product->get_package_listings();
 $pack_featured_listings  = $product->get_package_featured_listings();
 $pack_unlimited_listings = $product->is_unlimited_listings();
-$unlimited_listings      = $pack_unlimited_listings == 'on' ? 0 : 1;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="package-inner<?php if ( $product->is_highlighted() ): ?> package-hightlighted<?php endif; ?>">
@@ -34,7 +33,7 @@ $unlimited_listings      = $pack_unlimited_listings == 'on' ? 0 : 1;
                     <div class="pricing-more-info">
                         <div class="item-info">
                             <span>
-                                <?php if ( ! empty( $pack_listings ) && $unlimited_listings == 0 ): ?>
+                                <?php if ( $pack_listings && ! $pack_unlimited_listings ) : ?>
 	                                <?php echo trim( $pack_listings ); ?><?php esc_html_e( ' Listings', 'opalestate-pro' ); ?>
                                 <?php else: ?>
 	                                <?php esc_html_e( 'Unlimited', 'opalestate-pro' ); ?><?php esc_html_e( ' Listings', 'opalestate-pro' ); ?>
@@ -43,7 +42,7 @@ $unlimited_listings      = $pack_unlimited_listings == 'on' ? 0 : 1;
                         </div>
                         <div class="item-info">
                             <span>
-                                <?php if ( ! empty( $pack_featured_listings ) && $unlimited_listings == 0 ): ?>
+                                <?php if ( $pack_featured_listings && ! $pack_unlimited_listings ) : ?>
 	                                <?php echo trim( $pack_featured_listings ); ?><?php esc_html_e( ' Featured', 'opalestate-pro' ); ?>
                                 <?php else: ?>
 	                                <?php esc_html_e( 'Unlimited', 'opalestate-pro' ); ?><?php esc_html_e( ' Featured', 'opalestate-pro' ); ?>
@@ -62,15 +61,15 @@ $unlimited_listings      = $pack_unlimited_listings == 'on' ? 0 : 1;
                 </div>
             </div>
             <div class="pricing-footer">
-                <?php echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
-	                sprintf( '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-		                esc_url( $product->add_to_cart_url() ),
-		                esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-		                esc_attr( isset( $args['class'] ) ? $args['class'] : 'membership-add-to-purchase btn btn-md btn-block' ),
-		                isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-		                esc_html( $product->add_to_cart_text() )
-	                ),
-	                $product, $args ); ?>
+				<?php echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
+					sprintf( '<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
+						esc_url( $product->add_to_cart_url() ),
+						esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
+						esc_attr( isset( $args['class'] ) ? $args['class'] : 'membership-add-to-purchase btn btn-md btn-block' ),
+						isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+						esc_html( $product->add_to_cart_text() )
+					),
+					$product, $args ); ?>
             </div>
         </div>
     </div>

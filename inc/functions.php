@@ -387,7 +387,7 @@ if ( ! function_exists( 'opalestate_packages_show_membership_warning' ) ) {
 }
 
 if ( ! function_exists( 'opalestate_packages_is_membership_valid' ) ) {
-	function opalestate_packages_is_membership_valid( $user_id ) {
+	function opalestate_packages_is_membership_valid( $user_id = null ) {
 		return User::is_membership_valid( $user_id );
 	}
 }

@@ -100,7 +100,6 @@ class Metabox {
 				'description' => esc_html__( 'Do you want enable recurring?', 'opalestate-packages' ),
 			] );
 
-			$custom_attributes = get_post_meta( $post->ID, 'opalestate_package_package_listings', true ) ? 'disabled' : '';
 			woocommerce_wp_text_input( [
 				'id'                => 'opalestate_package_package_listings',
 				'label'             => esc_html__( 'Number of listings', 'opalestate-packages' ),
@@ -111,15 +110,7 @@ class Metabox {
 				'custom_attributes' => [
 					'min'              => '0',
 					'step'             => '1',
-					$custom_attributes => $custom_attributes,
 				],
-			] );
-
-			woocommerce_wp_checkbox( [
-				'id'          => 'opalestate_package_unlimited_listings',
-				'label'       => esc_html__( 'Unlimited listing', 'opalestate-packages' ),
-				'value'       => get_post_meta( $post->ID, 'opalestate_package_unlimited_listings', true ),
-				'description' => esc_html__( 'Unlimited listing?', 'opalestate-packages' ),
 			] );
 
 			woocommerce_wp_text_input( [
@@ -135,19 +126,17 @@ class Metabox {
 					'step' => '1',
 				],
 			] );
+
+			woocommerce_wp_checkbox( [
+				'id'          => 'opalestate_package_unlimited_listings',
+				'label'       => esc_html__( 'Unlimited listing', 'opalestate-packages' ),
+				'value'       => get_post_meta( $post->ID, 'opalestate_package_unlimited_listings', true ),
+				'description' => esc_html__( 'Unlimited listing?', 'opalestate-packages' ),
+			] );
 			?>
 
             <script type="text/javascript">
                 jQuery( '.pricing' ).addClass( 'show_if_opalestate_package' );
-                jQuery( document ).ready( function ( $ ) {
-                    $( '#opalestate_package_unlimited_listings' ).change( function () {
-                        if ( this.checked ) {
-                            $( '#opalestate_package_package_listings' ).prop( 'disabled', true );
-                        } else {
-                            $( '#opalestate_package_package_listings' ).prop( 'disabled', false );
-                        }
-                    } );
-                } );
             </script>
 			<?php do_action( 'opalestate_package_data' ); ?>
         </div>
