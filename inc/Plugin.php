@@ -2,6 +2,10 @@
 namespace Opalestate_Packages;
 
 use Opalestate_Packages\Admin\Metabox;
+use Opalestate_Packages\Admin\Settings;
+use Opalestate_Packages\Core\Handler;
+use Opalestate_Packages\Core\WooCommerce_Hook;
+use Opalestate_Packages\Core\Shortcodes;
 
 /**
  * Set up and initialize
@@ -31,6 +35,9 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->register_admin();
+		$this->register_core();
+
+		add_action( 'plugins_loaded', [ $this, 'i18n' ], 3 );
 	}
 
 	/**
@@ -38,13 +45,16 @@ class Plugin {
 	 */
 	public function register_admin() {
 		new Metabox();
+		new Settings();
 	}
 
 	/**
-	 * Enqueue scripts.
+	 * Register core.
 	 */
-	public function enqueue_scripts() {
-
+	public function register_core() {
+		new Shortcodes();
+		new WooCommerce_Hook();
+		new Handler();
 	}
 
 	/**

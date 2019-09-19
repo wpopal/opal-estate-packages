@@ -10,10 +10,12 @@ class Metabox {
 			add_filter( 'product_type_selector', [ $this, 'product_type_selector' ] );
 			add_action( 'woocommerce_product_options_general_product_data', [ $this, 'product_data', ] );
 			add_action( 'woocommerce_process_product_meta', [ $this, 'save_product_data' ] );
-			add_filter( 'woocommerce_product_data_tabs', array( $this, 'product_data_tabs' ) );
+			add_filter( 'woocommerce_product_data_tabs', [ $this, 'product_data_tabs' ] );
 		}
 
-		add_action( 'after_switch_theme', array( $this, 'switch_theme_hook' ) );
+		add_action( 'after_switch_theme', [ $this, 'switch_theme_hook' ] );
+
+		add_action( 'cmb2_admin_init', [ $this, 'register_user_package_metabox' ] );
 	}
 
 	/**
@@ -207,6 +209,107 @@ class Metabox {
 			if ( ! get_term_by( 'slug', sanitize_title( 'opalestate_package' ), 'product_type' ) ) {
 				wp_insert_term( 'opalestate_package', 'product_type' );
 			}
+		}
+	}
+
+	/**
+	 * Hook in and add a metabox to add fields to the user profile pages
+	 */
+	public function register_user_package_metabox() {
+		if ( ! defined( 'OPALESTATE_PACKAGES_USER_PREFIX' ) || ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$prefix = OPALESTATE_PACKAGES_USER_PREFIX;
+		$fields = [];
+
+		foreach ( $fields as $field ) {
+			$cmb_user->add_field( $field );
+		}
+		$fields = [];
+		$date   = null;
+
+		$current_user = wp_get_current_user();
+
+		if ( ( isset( $_GET['user_id'] ) && $_GET['user_id'] ) ) {
+			$user_id = (int) $_GET['user_id'];
+		} else {
+			$user_id = get_current_user_id();
+		}
+
+		$date = get_user_meta( $user_id, OPALESTATE_PACKAGES_USER_PREFIX . 'package_expired', true );
+
+		/**
+		 * Metabox for the user profile screen
+		 */
+		$cmb_user = new_cmb2_box( [
+			'id'               => $prefix . 'package',
+			'title'            => esc_html__( 'Membership Package', 'opalestate-packages' ), // Doesn't output for user boxes
+			'object_types'     => [ 'user' ], // Tells CMB2 to use user_meta vs post_meta
+			'show_names'       => true,
+			'new_user_section' => 'add-new-user', // where form will show on new user page. 'add-existing-user' is only other valid option.
+		] );
+
+		$fields[] = [
+			'name'        => esc_html__( 'Package', 'opalestate-packages' ),
+			'id'          => $prefix . 'package_id',
+			'type'        => 'text',
+			'attributes'  => [
+				'type'    => 'number',
+				'pattern' => '\d*',
+				'min'     => 0,
+			],
+			'std'         => '1',
+			'description' => esc_html__( 'Set package ID with -1 as free package.', 'opalestate-packages' ),
+			'before_row'  => '<hr><h3> ' . __( 'Membership Information', 'opalestate-packages' ) . ' </h3>',
+		];
+
+
+		$fields[] = [
+			'name'        => esc_html__( 'Number Of Properties', 'opalestate-packages' ),
+			'id'          => $prefix . 'package_listings',
+			'type'        => 'text',
+			'attributes'  => [
+				'type'    => 'number',
+				'pattern' => '\d*',
+				'min'     => 0,
+			],
+			'std'         => '1',
+			'description' => esc_html__( 'Number of properties with this package. If not set it will be unlimited.', 'opalestate-packages' ),
+		];
+
+		$fields[] = [
+			'name'        => esc_html__( 'Number Of Featured Properties', 'opalestate-packages' ),
+			'id'          => $prefix . 'package_featured_listings',
+			'type'        => 'text',
+			'attributes'  => [
+				'type'    => 'number',
+				'pattern' => '\d*',
+				'min'     => 0,
+			],
+			'std'         => '1',
+			'description' => esc_html__( 'Number of properties can make featured with this package.', 'opalestate-packages' ),
+		];
+
+		$fields[] = [
+			'name'        => esc_html__( 'Expired', 'opalestate-packages' ),
+			'id'          => $prefix . 'package_expired_date',
+			'type'        => 'text_date',
+			'default'     => $date,
+			'std'         => '1',
+			'description' => esc_html__( 'Show expired time in double format.', 'opalestate-packages' ),
+		];
+
+		$fields[] = [
+			'name'        => esc_html__( 'Expired', 'opalestate-packages' ),
+			'id'          => $prefix . 'package_expired',
+			'type'        => 'text',
+			'std'         => '1',
+			'description' => esc_html__( 'Show expired time in double format.', 'opalestate-packages' ),
+		];
+
+		foreach ( $fields as $field ) {
+			$cmb_user->add_field( $field );
 		}
 	}
 }

@@ -1,25 +1,6 @@
 <?php
-/**
- * $Desc$
- *
- * @version    $Id$
- * @package    opalmembership
- * @author     Opal  Team <info@wpopal.com >
- * @copyright  Copyright (C) 2016 wpopal.com. All Rights Reserved.
- * @license    GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
- *
- * @website  http://www.wpopal.com
- * @support  http://www.wpopal.com/support/forum.html
- */
+namespace Opalestate_Packages\Core;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
-/**
- * @class Template_Loader
- *
- * @version 1.0
- */
 class Template_Loader {
 	/**
 	 * Gets template path
@@ -28,7 +9,7 @@ class Template_Loader {
 	 * @param $name
 	 * @param $plugin_dir
 	 * @return string
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	public static function locate( $name, $plugin_dir = OPALESTATE_PACKAGES_PLUGIN_URL ) {
 		$template = '';
@@ -55,7 +36,7 @@ class Template_Loader {
 
 		// Nothing found
 		if ( empty( $template ) ) {
-			throw new Exception( "Template /templates/{$name}.php in plugin dir {$plugin_dir} not found." );
+			throw new \Exception( "Template /templates/{$name}.php in plugin dir {$plugin_dir} not found." );
 		}
 
 		return $template;
@@ -68,7 +49,6 @@ class Template_Loader {
 	 * @param array  $args
 	 * @param string $plugin_dir
 	 * @return string
-	 * @throws Exception
 	 */
 	public static function get_template_part( $name, $args = array(), $plugin_dir = '' ) {
 		if ( is_array( $args ) && count( $args ) > 0 ) {
@@ -76,10 +56,10 @@ class Template_Loader {
 		}
 
 		if ( ! $plugin_dir ) {
-			$plugin_dir = OPALMEMBERSHIP_PLUGIN_DIR;
+			$plugin_dir = OPALESTATE_PACKAGES_PLUGIN_PATH;
 		}
 
-		$path = self::locate( $name, $plugin_dir );
+		$path = static::locate( $name, $plugin_dir );
 		ob_start();
 		include $path;
 		$result = ob_get_contents();

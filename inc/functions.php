@@ -1,4 +1,8 @@
 <?php
+
+use Opalestate_Packages\Core\Template_Loader;
+use Opalestate_Packages\Core\User;
+
 /**
  * Register product type.
  */
@@ -161,6 +165,9 @@ function opalestate_packages_add_product_type() {
 
 add_action( 'init', 'opalestate_packages_add_product_type' );
 
+function opalestate_packages_get_template_part( $name, $args = [], $plugin_dir = '' ) {
+	return Template_Loader::get_template_part( $name, $args, $plugin_dir );
+}
 
 /**
  * Count Number of listing following user
@@ -340,5 +347,59 @@ if ( ! function_exists( 'opalesate_listing_set_to_expire' ) ) {
 		];
 
 		wp_update_post( $prop );
+	}
+}
+
+if ( ! function_exists( 'opalestate_packages_get_endpoint_url' ) ) {
+	function opalestate_packages_get_endpoint_url( $endpoint, $value = '', $permalink = '' ) {
+		if ( ! $permalink ) {
+			$permalink = get_permalink();
+		}
+
+		if ( get_option( 'permalink_structure' ) ) {
+			if ( strstr( $permalink, '?' ) ) {
+				$query_string = '?' . parse_url( $permalink, PHP_URL_QUERY );
+				$permalink    = current( explode( '?', $permalink ) );
+			} else {
+				$query_string = '';
+			}
+			$url = trailingslashit( $permalink ) . $endpoint . '/' . $value . $query_string;
+		} else {
+			$url = esc_url_raw( add_query_arg( $endpoint, $value, $permalink ) );
+		}
+
+		return apply_filters( 'opalestate_packages_get_endpoint_url', $url, $endpoint );
+	}
+}
+
+if ( ! function_exists( 'opalestate_packages_get_checkout_url' ) ) {
+	function opalestate_packages_get_checkout_url( $product_id ) {
+		$checkout_url = opalestate_packages_get_endpoint_url( 'package-checkout' );
+
+		return esc_url_raw( add_query_arg( 'product_id', $product_id, $checkout_url ) );
+	}
+}
+
+if ( ! function_exists( 'opalestate_packages_show_membership_warning' ) ) {
+	function opalestate_packages_show_membership_warning() {
+		echo opalestate_packages_get_template_part( 'account/membership-warning' );
+	}
+}
+
+if ( ! function_exists( 'opalestate_packages_is_membership_valid' ) ) {
+	function opalestate_packages_is_membership_valid( $user_id ) {
+		return User::is_membership_valid( $user_id );
+	}
+}
+
+if ( ! function_exists( 'opalestate_packages_get_membership_page_uri' ) ) {
+	function opalestate_packages_get_membership_page_uri() {
+
+		global $opalmembership_options;
+
+		$membership_page = isset( $opalmembership_options['membership_page'] ) ? get_permalink( absint( $opalmembership_options['membership_page'] ) ) : get_bloginfo( 'url' );
+
+		return apply_filters( 'opalestate_packages_get_membership_page_uri', $membership_page );
+
 	}
 }
