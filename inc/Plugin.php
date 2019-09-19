@@ -38,6 +38,7 @@ class Plugin {
 		$this->register_core();
 
 		add_action( 'plugins_loaded', [ $this, 'i18n' ], 3 );
+		add_filter( 'woocommerce_register_post_type_product', [ $this, 'rename_woocommerce' ], 3 );
 	}
 
 	/**
@@ -62,5 +63,20 @@ class Plugin {
 	 */
 	public function i18n() {
 		load_plugin_textdomain( 'opalestate-packages', false, 'opal-estate-packages/languages' );
+	}
+
+	/**
+	 * @param $args
+	 * @return mixed
+	 */
+	public function rename_woocommerce( $args ) {
+		if ( apply_filters( 'opalestate_packages_rename_woocommerce', true ) ) {
+			$args['labels']['name']          = __( 'Packages', 'opalestate-packages' );
+			$args['labels']['singular_name'] = __( 'Package', 'opalestate-packages' );
+			$args['labels']['menu_name']     = _x( 'Packages', 'Admin menu name', 'opalestate-packages' );
+			$args['labels']['all_items']     = _x( 'All Packages', 'Admin menu name', 'opalestate-packages' );
+		}
+
+		return $args;
 	}
 }
