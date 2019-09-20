@@ -3,6 +3,7 @@ Contributors: wpopal
 Donate link: http://www.wpopal.com/
 Tags:  community, member, opalestate_addon, profile, ecommerce, subscription, membership, user
 Requires at least: 4.6
+Requires PHP: 5.6
 Tested up to: 5.2.3
 Stable tag: 1.0.0
 License: GPLv3
