@@ -93,11 +93,18 @@ class Metabox {
 				'description' => esc_html__( 'Highlighted?', 'opalestate-packages' ),
 			] );
 
+			// woocommerce_wp_checkbox( [
+			// 	'id'          => 'opalestate_package_recurring',
+			// 	'label'       => esc_html__( 'Recurring', 'opalestate-packages' ),
+			// 	'value'       => get_post_meta( $post->ID, 'opalestate_package_recurring', true ),
+			// 	'description' => esc_html__( 'Do you want enable recurring?', 'opalestate-packages' ),
+			// ] );
+
 			woocommerce_wp_checkbox( [
-				'id'          => 'opalestate_package_recurring',
-				'label'       => esc_html__( 'Recurring', 'opalestate-packages' ),
-				'value'       => get_post_meta( $post->ID, 'opalestate_package_recurring', true ),
-				'description' => esc_html__( 'Do you want enable recurring?', 'opalestate-packages' ),
+				'id'          => 'opalestate_package_unlimited_listings',
+				'label'       => esc_html__( 'Limited listing?', 'opalestate-packages' ),
+				'value'       => get_post_meta( $post->ID, 'opalestate_package_unlimited_listings', true ),
+				'description' => esc_html__( 'Check if set limited listings. Default: Unlimited listings. Notice: Enter Number Of Properties when set limited listings.', 'opalestate-packages' ),
 			] );
 
 			woocommerce_wp_text_input( [
@@ -125,13 +132,6 @@ class Metabox {
 					'min'  => '-1',
 					'step' => '1',
 				],
-			] );
-
-			woocommerce_wp_checkbox( [
-				'id'          => 'opalestate_package_unlimited_listings',
-				'label'       => esc_html__( 'Unlimited listing', 'opalestate-packages' ),
-				'value'       => get_post_meta( $post->ID, 'opalestate_package_unlimited_listings', true ),
-				'description' => esc_html__( 'Unlimited listing?', 'opalestate-packages' ),
 			] );
 			?>
 

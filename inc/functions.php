@@ -100,12 +100,12 @@ function opalestate_packages_add_product_type() {
 
 		public function is_unlimited_listings() {
 			$value = get_post_meta( $this->get_id(), 'opalestate_package_unlimited_listings', true );
-
+			// Convert with opal membership.
 			if ( $value ) {
-				return true;
+				return false;
 			}
 
-			return false;
+			return true;
 		}
 
 		public function get_package_featured_listings() {
