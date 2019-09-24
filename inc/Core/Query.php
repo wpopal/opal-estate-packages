@@ -69,4 +69,29 @@ class Query {
 
 		return new \WP_Query( $args );
 	}
+
+	public static function get_user_purchased_package( $user_id, $package_id ) {
+		$args = [
+			'post_type'      => 'shop_order',
+			'posts_per_page' => -1,
+			'paged'          => 99,
+			'post_status'    => 'wc-completed',
+			'meta_query'     => [
+				[
+					'key'   => OPALESTATE_PACKAGES_PAYMENT_PREFIX . 'user_id',
+					'value' => $user_id,
+				],
+				[
+					'key'   => OPALESTATE_PACKAGES_PAYMENT_PREFIX . 'package_id',
+					'value' => $package_id,
+				],
+			],
+		];
+
+		$query = new \WP_Query( $args );
+
+		wp_reset_postdata();
+
+		return $query->found_posts;
+	}
 }

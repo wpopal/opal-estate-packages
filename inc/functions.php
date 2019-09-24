@@ -2,6 +2,7 @@
 
 use Opalestate_Packages\Core\Template_Loader;
 use Opalestate_Packages\Core\User;
+use Opalestate_Packages\Core\Query;
 
 /**
  * Register product type.
@@ -250,7 +251,6 @@ if ( ! function_exists( 'opalesate_check_has_add_listing' ) ) {
 	 * Check Current User having permission to add new property or not?
 	 */
 	function opalesate_check_has_add_listing( $user_id, $package_id = null ) {
-
 		if ( ! $package_id ) {
 			$package_id = (int) get_user_meta( $user_id, OPALESTATE_PACKAGES_USER_PREFIX . 'package_id', true );
 		}
@@ -259,7 +259,7 @@ if ( ! function_exists( 'opalesate_check_has_add_listing' ) ) {
 
 		$product            = wc_get_product( $package_id );
 		$unlimited_listings = $product ? $product->get_meta( 'opalestate_package_unlimited_listings' ) : '';
-		$unlimited_listings = ! empty( $unlimited_listings ) && $unlimited_listings == 'on' ? 0 : 1;
+		$unlimited_listings = ! empty( $unlimited_listings ) && $unlimited_listings == 'yes' ? 0 : 1;
 
 		if ( $package_id > 0 && $unlimited_listings ) {
 			return true;
@@ -402,4 +402,53 @@ if ( ! function_exists( 'opalestate_packages_get_membership_page_uri' ) ) {
 		return apply_filters( 'opalestate_packages_get_membership_page_uri', $membership_page );
 
 	}
+}
+
+if ( ! function_exists( 'opalestate_packages_is_unlimited_purchased' ) ) {
+	function opalestate_packages_is_unlimited_purchased() {
+		$cart = WC()->cart->get_cart();
+		if ( ! $cart ) {
+			return;
+		}
+
+		$current_user = wp_get_current_user();
+
+		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+			$product_id = $cart_item['product_id'];
+			$product    = wc_get_product( $product_id );
+
+			if ( $product->is_type( 'opalestate_package' ) ) {
+				$limit = (int) get_post_meta( $product_id, 'opalestate_package_maximum_purchased', true );
+				if ( $limit > 0 ) {
+					$purchased = Query::get_user_purchased_package( $current_user->ID, $product_id );
+					if ( $purchased >= $limit ) {
+						return true;
+					}
+				}
+
+				break;
+			}
+		}
+	}
+}
+
+function opalestate_packages_get_current_package_page_uri() {
+	$option = opalestate_get_option( 'packages_my_membership_page' );
+	$page   = $option ? get_permalink( absint( $option ) ) : get_bloginfo( 'url' );
+
+	return apply_filters( 'opalestate_packages_get_current_package_page_uri', $page );
+}
+
+function opalestate_packages_get_history_page_uri() {
+	$option = opalestate_get_option( 'packages_my_invoices_page' );
+	$page   = $option ? get_permalink( absint( $option ) ) : get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+
+	return apply_filters( 'opalestate_packages_get_history_page_uri', $page ? $page : get_bloginfo( 'url' ) );
+}
+
+function opalestate_packages_get_packages_page_uri() {
+	$option = opalestate_get_option( 'packages_renew_membership_page' );
+	$page   = $option ? get_permalink( absint( $option ) ) : get_bloginfo( 'url' );
+
+	return apply_filters( 'opalestate_packages_get_packages_page_uri', $page );
 }

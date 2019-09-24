@@ -70,6 +70,7 @@ if ( defined( 'OPALESTATE_PACKAGES_VERSION' ) ) {
 
 define( 'OPALESTATE_PACKAGES_VERSION', '1.0.0' );
 define( 'OPALESTATE_PACKAGES_USER_PREFIX', 'opalmb_' );
+define( 'OPALESTATE_PACKAGES_PAYMENT_PREFIX', 'opalmembership_payment_' );
 define( 'OPALESTATE_PACKAGES_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OPALESTATE_PACKAGES_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 

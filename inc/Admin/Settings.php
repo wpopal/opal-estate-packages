@@ -8,6 +8,8 @@ class Settings {
 	public function __construct() {
 		if ( is_admin() ) {
 			add_filter( 'opalestate_settings_submission', [ $this, 'register_settings_submission' ] );
+			add_filter( 'opalestate_settings_tabs', [ $this, 'register_admin_setting_tab' ], 1 );
+			add_filter( 'opalestate_registered_packages_settings', [ $this, 'register_admin_settings' ], 10, 1 );
 		}
 	}
 
@@ -53,5 +55,72 @@ class Settings {
 		];
 
 		return array_merge( $fields, $tmp );
+	}
+
+	/**
+	 * Register admin setting tab.
+	 *
+	 * @param $tabs
+	 * @return mixed
+	 */
+	public function register_admin_setting_tab( $tabs ) {
+		$tabs['packages'] = esc_html__( 'Packages', 'opalestate-packages' );
+
+		return $tabs;
+	}
+
+	/**
+	 * Register admin settings.
+	 *
+	 * @param $fields
+	 * @return array
+	 */
+	public function register_admin_settings( $fields ) {
+		$fields = [
+			'id'      => 'options_page_packages',
+			'title'   => esc_html__( 'Packages Settings', 'opalestate-packages' ),
+			'show_on' => [ 'key' => 'options-page', 'value' => [ 'opalestate_settings' ], ],
+			'fields'  => apply_filters( 'opalestate_settings_packages', [
+					[
+						'name' => esc_html__( 'Packages Settings', 'opalestate-packages' ),
+						'desc' => '<hr>',
+						'id'   => 'opalestate_title_packages_settings',
+						'type' => 'title',
+					],
+					[
+						'name'    => esc_html__( 'My Membership page', 'opalestate-packages' ),
+						'desc'    => esc_html__( 'This is the submission page. The <code>[opalestate_packages_user_current_package]</code> shortcode should be on this page.', 'opalestate-packages' ),
+						'id'      => 'packages_my_membership_page',
+						'type'    => 'select',
+						'options' => opalestate_cmb2_get_post_options( [
+							'post_type'   => 'page',
+							'numberposts' => -1,
+						] ),
+					],
+					[
+						'name'    => esc_html__( 'My Invoices page', 'opalestate-packages' ),
+						'desc'    => esc_html__( 'This is the submission page. The <code>[woocommerce_my_account]</code> shortcode should be on this page.', 'opalestate-packages' ),
+						'id'      => 'packages_my_invoices_page',
+						'type'    => 'select',
+						'options' => opalestate_cmb2_get_post_options( [
+							'post_type'   => 'page',
+							'numberposts' => -1,
+						] ),
+					],
+					[
+						'name'    => esc_html__( 'Renew Membership page', 'opalestate-packages' ),
+						'desc'    => esc_html__( 'This is the submission page. The <code>[opalestate_packages_collection]</code> shortcode should be on this page.', 'opalestate-packages' ),
+						'id'      => 'packages_renew_membership_page',
+						'type'    => 'select',
+						'options' => opalestate_cmb2_get_post_options( [
+							'post_type'   => 'page',
+							'numberposts' => -1,
+						] ),
+					],
+				]
+			),
+		];
+
+		return $fields;
 	}
 }

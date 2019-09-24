@@ -41,13 +41,12 @@ class Handler {
 
 			/// check before uploading image
 			add_action( 'opalestate_before_process_ajax_upload_file', [ $this, 'check_ajax_upload' ] );
-			add_action( 'opalestate_process_submission_after', [ $this, 'update_remainng_listing' ], 10, 3 );
+			add_action( 'opalestate_process_submission_after', [ $this, 'update_remaining_listing' ], 10, 3 );
 
 			/**
 			 * HOOK to user management Menu
 			 */
-			// add_filter( 'opalestate_management_user_menu', [ $this, 'membership_menu' ] );
-
+			add_filter( 'opalestate_management_user_menu', [ $this, 'membership_menu' ] );
 			add_action( 'profile_update', [ $this, 'on_update_user' ], 10, 1 );
 		}
 	}
@@ -100,8 +99,6 @@ class Handler {
 			return;
 		}
 		foreach ( $cmb2->data_to_save as $name => $value ) {
-
-
 			if ( strpos( $name, OPALESTATE_AGENT_PREFIX ) === 0 ) {
 				update_user_meta( $user_id, OPALESTATE_USER_PROFILE_PREFIX . substr( $name, strlen( OPALESTATE_AGENT_PREFIX ) ), $value );
 			}
@@ -182,7 +179,7 @@ class Handler {
 			return true;
 		}
 
-		if ( class_exists( 'Opalmembership_User' ) ) {
+		if ( class_exists( 'User' ) ) {
 			return opalestate_packages_show_membership_warning();
 		}
 	}
@@ -198,7 +195,7 @@ class Handler {
 			return;
 		}
 
-		echo opalestate_load_template_path( 'parts/membership-warning', [ 'user_id' => $user_id ] );
+		echo opalestate_packages_get_template_part( 'account/membership-warning', [ 'user_id' => $user_id ] );
 	}
 
 	/**
@@ -247,17 +244,21 @@ class Handler {
 	}
 
 	/**
+	 * Remain listings.
+	 *
 	 * @param      $user_id
 	 * @param      $property_id
 	 * @param bool $isedit
 	 */
-	public function update_remainng_listing( $user_id, $property_id, $isedit = true ) {
+	public function update_remaining_listing( $user_id, $property_id, $isedit = true ) {
 		if ( $isedit != true ) {
 			opalesate_update_package_number_listings( $user_id );
 		}
 	}
 
 	/**
+	 * On update user.
+	 *
 	 * @param $user_id
 	 */
 	public function on_update_user( $user_id ) {
@@ -270,5 +271,33 @@ class Handler {
 				update_user_meta( $user_id, OPALESTATE_PACKAGES_USER_PREFIX . 'package_expired', $expired_time );
 			}
 		}
+	}
+
+	/**
+	 * Hook Method to add more link for user management
+	 */
+	public function membership_menu( $menu ) {
+		$menu['membership'] = [
+			'icon'  => 'fa fa-user',
+			'link'  => opalestate_packages_get_current_package_page_uri(),
+			'title' => esc_html__( 'My Membership', 'opalestate-packages' ),
+			'id'    => 0,
+		];
+
+		$menu['membership_history'] = [
+			'icon'  => 'fa fa-user',
+			'link'  => opalestate_packages_get_history_page_uri(),
+			'title' => esc_html__( 'My Invoices', 'opalestate-packages' ),
+			'id'    => 0,
+		];
+
+		$menu['packages'] = [
+			'icon'  => 'fa fa-certificate',
+			'link'  => opalestate_packages_get_packages_page_uri(),
+			'title' => esc_html__( 'Renew membership', 'opalestate-packages' ),
+			'id'    => 0,
+		];
+
+		return $menu;
 	}
 }

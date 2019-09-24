@@ -8,6 +8,7 @@ class Shortcodes {
 	public function __construct() {
 		$shortcodes = [
 			'collection',
+			'user_current_package',
 		];
 
 		foreach ( $shortcodes as $shortcode ) {
@@ -27,5 +28,13 @@ class Shortcodes {
 		], $atts );
 
 		return opalestate_packages_get_template_part( 'packages', $atts );
+	}
+
+	/**
+	 * @param $atts
+	 * @return void
+	 */
+	public function user_current_package( $atts ) {
+		return opalestate_packages_get_template_part( 'account/current-package', $atts );
 	}
 }
