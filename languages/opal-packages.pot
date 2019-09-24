@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Opal Estate Packages\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-20 03:28+0000\n"
+"POT-Creation-Date: 2019-09-24 08:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -29,30 +29,30 @@ msgid ""
 "version %s. Please contact to your administrator to upgrade PHP version!"
 msgstr ""
 
-#: opal-estate-packages.php:82
+#: opal-estate-packages.php:83
 msgid ""
 "Please note that the <strong>Opal Packages</strong> plugin is meant to be "
 "used only with the <strong>Opal Estate Pro</strong> plugin.</p>"
 msgstr ""
 
-#: opal-estate-packages.php:88
+#: opal-estate-packages.php:89
 msgid ""
 "Please note that the <strong>Opal Packages</strong> plugin is meant to be "
 "used only with the <strong>WooCommerce</strong> plugin.</p>"
 msgstr ""
 
-#: opal-estate-packages.php:94
+#: opal-estate-packages.php:95
 msgid ""
 "Please note that the <strong>Opal Packages</strong> plugin is meant to be "
 "used only without the <strong>OpalMembership</strong> plugin. You should "
 "only choose 1 of 2.</p>"
 msgstr ""
 
-#: inc/functions.php:159
+#: inc/functions.php:160
 msgid "Select"
 msgstr ""
 
-#: inc/functions.php:159
+#: inc/functions.php:160
 msgid "Read More"
 msgstr ""
 
@@ -68,10 +68,14 @@ msgid ""
 msgstr ""
 
 #. URI of the plugin
-#. Author URI of the plugin
-msgid "wpopal.com"
+msgid "http://www.wpopal.com/product/opal-estate-wordpress-plugin/"
 msgstr ""
 
 #. Author of the plugin
 msgid "WPOPAL"
+msgstr ""
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "wpopal.com"
 msgstr ""
