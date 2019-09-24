@@ -31,6 +31,14 @@ if ( $package_id ) :
 
 	$package_activation = date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $package_activation );
 	$package_expired    = date_i18n( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), $package_expired );
+
+	$current_listings         = get_user_meta( $user_id, OPALESTATE_PACKAGES_USER_PREFIX . 'package_listings', true );
+	$curent_featured_listings = get_user_meta( $user_id, OPALESTATE_PACKAGES_USER_PREFIX . 'package_featured_listings', true );
+
+	$pack_listings           = get_post_meta( $package_id, 'opalestate_package_package_listings', true );
+	$pack_featured_listings  = get_post_meta( $package_id, 'opalestate_package_package_featured_listings', true );
+	$pack_unlimited_listings = get_post_meta( $package_id, 'opalestate_package_unlimited_listings', true );
+	$unlimited_listings      = $pack_unlimited_listings == 'yes' ? 0 : 1;
 	$actions            = wc_get_account_orders_actions( $payment );
 
 	if ( $package && $payment ) : ?>
@@ -64,6 +72,18 @@ if ( $package_id ) :
                         <li><span><?php esc_html_e( 'Membership', 'opalestate-packages' ); ?></span>: <?php echo esc_html( $package->get_title() ); ?> </li>
                         <li><span><?php esc_html_e( 'Activion Date', 'opalestate-packages' ); ?></span>: <?php echo esc_html( $package_activation ); ?></li>
                         <li><span><?php esc_html_e( 'Expired On', 'opalestate-packages' ); ?></span>: <?php echo esc_html( $package_expired ); ?></li>
+	                    <?php if ( $unlimited_listings == 1 && $package_id > 0 ) : ?>
+                            <li><span><?php esc_html_e( '(Package) Listings Included:', 'opalestate-pro' ); ?></span><?php esc_html_e( 'Unlimited', 'opalestate-pro' ) ?></span></li>
+                            <li><span><?php esc_html_e( '(Package) Featured Included:', 'opalestate-pro' ); ?></span><?php esc_html_e( 'Unlimited', 'opalestate-pro' ) ?></li>
+	                    <?php else : ?>
+		                    <?php if ( $package_id > 0 ) : ?>
+                                <li><span><?php esc_html_e( '(Package) Listings Included:', 'opalestate-pro' ); ?></span><?php echo absint( $pack_listings ); ?></span></li>
+                                <li><span><?php esc_html_e( '(Package) Featured Included:', 'opalestate-pro' ); ?></span><?php echo absint( $pack_featured_listings ); ?></li>
+		                    <?php endif; ?>
+                            <li><span><?php esc_html_e( 'Listings Remaining:', 'opalestate-pro' ); ?></span> <span class="text-primary"><?php echo absint( $current_listings ); ?></span></li>
+                            <li><span><?php esc_html_e( 'Featured Remaining:', 'opalestate-pro' ); ?></span> <span class="text-primary"><?php echo absint( $curent_featured_listings ); ?></span></li>
+	                    <?php endif; ?>
+
 						<?php do_action( 'opalestate_packages_current_package_summary_after', $package_id, $payment_id ); ?>
                     </ul>
                 </div>

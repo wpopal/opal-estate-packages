@@ -2,14 +2,9 @@
 /**
  * Plugin Name:     Opal Estate Packages
  * Plugin URI:      http://www.wpopal.com/product/opal-estate-wordpress-plugin/
- * Description:     Create estate membership packages as products. Seamlessly connects with Woocommerce to benefit from all variety of Woocommerce extensions and payment gateways. It's another solution for the Opal Membership plugin.
- * Author:          WPOPAL
- * Author URI:      wpopal.com
- * Text Domain:     opal-estate-packages
- * Domain Path:     /languages
- * Version:         1.0.0
- * WC requires at least: 3.0.0
- * WC tested up to: 3.7
+ * Description:     Create estate membership packages as products. Seamlessly connects with Woocommerce to benefit from all variety of Woocommerce extensions and payment gateways. It's another
+ * solution for the Opal Membership plugin. Author:          WPOPAL Author URI:      wpopal.com Text Domain:     opal-estate-packages Domain Path:     /languages Version:         1.0.0 WC requires at
+ * least: 3.0.0 WC tested up to: 3.7
  *
  * @package         Opalestate_Packages
  */
@@ -71,6 +66,7 @@ if ( defined( 'OPALESTATE_PACKAGES_VERSION' ) ) {
 define( 'OPALESTATE_PACKAGES_VERSION', '1.0.0' );
 define( 'OPALESTATE_PACKAGES_USER_PREFIX', 'opalmb_' );
 define( 'OPALESTATE_PACKAGES_PAYMENT_PREFIX', 'opalmembership_payment_' );
+define( 'OPALESTATE_PACKAGES_PACKAGES_PREFIX', 'opalestate_package_' );
 define( 'OPALESTATE_PACKAGES_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OPALESTATE_PACKAGES_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -92,7 +88,8 @@ function opalestate_packages_admin_notice() {
 
 	if ( class_exists( 'OpalMembership' ) ) {
 		echo '<div class="error">';
-		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only without the <strong>OpalMembership</strong> plugin. You should only choose 1 of 2.</p>', 'opal-packages' );
+		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only without the <strong>OpalMembership</strong> plugin. You should only choose 1 of 2.</p>',
+				'opal-packages' );
 		echo '</div>';
 	}
 }
