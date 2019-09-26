@@ -2,9 +2,14 @@
 /**
  * Plugin Name:     Opal Estate Packages
  * Plugin URI:      http://www.wpopal.com/product/opal-estate-wordpress-plugin/
- * Description:     Create estate membership packages as products. Seamlessly connects with Woocommerce to benefit from all variety of Woocommerce extensions and payment gateways. It's another
- * solution for the Opal Membership plugin. Author:          WPOPAL Author URI:      wpopal.com Text Domain:     opal-estate-packages Domain Path:     /languages Version:         1.0.0 WC requires at
- * least: 3.0.0 WC tested up to: 3.7
+ * Description:     It's another solution for the Opal Membership plugin. Seamlessly connects with Woocommerce to benefit from all variety of Woocommerce extensions and payment gateways.
+ * Author:          WPOPAL
+ * Author URI:      wpopal.com
+ * Text Domain:     opal-estate-packages
+ * Domain Path:     /languages
+ * Version:         1.0.0
+ * WC requires at least: 3.0.0
+ * WC tested up to: 3.7
  *
  * @package         Opalestate_Packages
  */
