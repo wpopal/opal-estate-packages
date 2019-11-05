@@ -7,7 +7,7 @@ class Settings {
 	 */
 	public function __construct() {
 		if ( is_admin() ) {
-			add_filter( 'opalestate_settings_submission', [ $this, 'register_settings_submission' ] );
+			// add_filter( 'opalestate_settings_submission', [ $this, 'register_settings_submission' ] );
 			add_filter( 'opalestate_settings_tabs', [ $this, 'register_admin_setting_tab' ], 1 );
 			add_filter( 'opalestate_registered_packages_settings', [ $this, 'register_admin_settings' ], 10, 1 );
 		}

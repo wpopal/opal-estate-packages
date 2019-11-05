@@ -6,11 +6,11 @@ class Handler {
 	 * Handler constructor.
 	 */
 	public function __construct() {
-		if ( opalestate_options( 'enabel_free_submission' ) ) {
-			/// free account
-			add_action( 'user_register', [ $this, 'opalestate_on_create_user' ], 10, 1 );
-			add_action( 'profile_update', [ $this, 'opalestate_on_update_user' ] );
-		}
+		// if ( opalestate_options( 'enabel_free_submission' ) ) {
+		// 	/// free account
+		// 	add_action( 'user_register', [ $this, 'opalestate_on_create_user' ], 10, 1 );
+		// 	add_action( 'profile_update', [ $this, 'opalestate_on_update_user' ] );
+		// }
 
 		if ( get_current_user_id() ) {
 			add_action( 'show_admin_bar', [ $this, 'hide_admin_toolbar' ] );
