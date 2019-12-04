@@ -54,7 +54,7 @@ class Metabox {
 			woocommerce_wp_checkbox( [
 				'id'          => 'opalestate_package_enable_expired',
 				'label'       => esc_html__( 'Enable Expired Date', 'opalestate-packages' ),
-				'value'       => get_post_meta( $post->ID, 'opalestate_package_recurring', true ),
+				'value'       => get_post_meta( $post->ID, 'opalestate_package_enable_expired', true ),
 				'description' => esc_html__( 'Do you want enable expired date?', 'opalestate-packages' ),
 			] );
 
@@ -78,12 +78,7 @@ class Metabox {
 				'description' => esc_html__( 'Enter expired date type. Example Day(s), Week(s), Month(s), Year(s)', 'opalestate-packages' ),
 				'placeholder' => '',
 				'desc_tip'    => true,
-				'options'     => [
-					'day'   => esc_html__( 'Day', 'opalestate-packages' ),
-					'week'  => esc_html__( 'Week', 'opalestate-packages' ),
-					'month' => esc_html__( 'Month', 'opalestate-packages' ),
-					'year'  => esc_html__( 'Year', 'opalestate-packages' ),
-				],
+				'options'     => opalestate_packages_get_expired_time_units(),
 			] );
 
 			woocommerce_wp_checkbox( [

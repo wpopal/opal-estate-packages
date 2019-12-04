@@ -10,6 +10,7 @@ if ( has_post_thumbnail() ) {
 $pack_listings           = $product->get_package_listings();
 $pack_featured_listings  = $product->get_package_featured_listings();
 $pack_unlimited_listings = $product->is_unlimited_listings();
+$units                   = opalestate_packages_get_expired_time_units();
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="package-inner<?php if ( $product->is_highlighted() ): ?> package-hightlighted<?php endif; ?>">
@@ -23,7 +24,7 @@ $pack_unlimited_listings = $product->is_unlimited_listings();
 						<?php
 						$duration_unit = $product->get_package_duration_unit();
 						$duration      = absint( $product->get_package_duration() );
-						echo esc_html( $duration . ' ' . $duration_unit );
+						echo esc_html( $duration . ' ' . $units[ $duration_unit ] );
 						?>
                     </p>
                 </div>
@@ -33,7 +34,7 @@ $pack_unlimited_listings = $product->is_unlimited_listings();
                     <div class="pricing-more-info">
                         <div class="item-info">
                             <span>
-                                <?php if ( $pack_listings && ! $pack_unlimited_listings ) : ?>
+                                <?php if ( ! $pack_unlimited_listings ) : ?>
 	                                <?php echo trim( $pack_listings ); ?><?php esc_html_e( ' Listings', 'opalestate-pro' ); ?>
                                 <?php else: ?>
 	                                <?php esc_html_e( 'Unlimited', 'opalestate-pro' ); ?><?php esc_html_e( ' Listings', 'opalestate-pro' ); ?>
@@ -42,7 +43,7 @@ $pack_unlimited_listings = $product->is_unlimited_listings();
                         </div>
                         <div class="item-info">
                             <span>
-                                <?php if ( $pack_featured_listings && ! $pack_unlimited_listings ) : ?>
+                                <?php if ( ( ( $pack_featured_listings && ( -1 != $pack_featured_listings ) ) || ( 0 == $pack_featured_listings ) ) && ! $pack_unlimited_listings ) : ?>
 	                                <?php echo trim( $pack_featured_listings ); ?><?php esc_html_e( ' Featured', 'opalestate-pro' ); ?>
                                 <?php else: ?>
 	                                <?php esc_html_e( 'Unlimited', 'opalestate-pro' ); ?><?php esc_html_e( ' Featured', 'opalestate-pro' ); ?>

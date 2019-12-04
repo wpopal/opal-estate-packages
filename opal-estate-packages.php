@@ -7,7 +7,7 @@
  * Author URI:      wpopal.com
  * Text Domain:     opal-estate-packages
  * Domain Path:     /languages
- * Version:         1.0.1
+ * Version:         1.0.2
  * WC requires at least: 3.0.0
  * WC tested up to: 3.7
  *
@@ -68,7 +68,7 @@ if ( defined( 'OPALESTATE_PACKAGES_VERSION' ) ) {
 	return;
 }
 
-define( 'OPALESTATE_PACKAGES_VERSION', '1.0.1' );
+define( 'OPALESTATE_PACKAGES_VERSION', '1.0.2' );
 define( 'OPALESTATE_PACKAGES_USER_PREFIX', 'opalmb_' );
 define( 'OPALESTATE_PACKAGES_PAYMENT_PREFIX', 'opalmembership_payment_' );
 define( 'OPALESTATE_PACKAGES_PACKAGES_PREFIX', 'opalestate_package_' );

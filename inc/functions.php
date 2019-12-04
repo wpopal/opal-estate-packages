@@ -66,7 +66,7 @@ function opalestate_packages_add_product_type() {
 		public function get_package_duration_unit() {
 			$value = get_post_meta( $this->get_id(), 'opalestate_package_duration_unit', true );
 
-			if ( ! empty( $value ) || ! in_array( $value, [ 'day', 'week', 'month', 'year' ] ) ) {
+			if ( empty( $value ) || ! in_array( $value, [ 'day', 'week', 'month', 'year' ] ) ) {
 				return 'day';
 			}
 
@@ -112,7 +112,7 @@ function opalestate_packages_add_product_type() {
 		public function get_package_featured_listings() {
 			$value = get_post_meta( $this->get_id(), 'opalestate_package_package_featured_listings', true );
 
-			return ! empty( $value ) ? absint( $value ) : 0;
+			return ! empty( $value ) ? ( $value ) : 0;
 		}
 
 		public function get_expiration_unit_time() {
@@ -451,4 +451,13 @@ function opalestate_packages_get_packages_page_uri() {
 	$page   = $option ? get_permalink( absint( $option ) ) : get_bloginfo( 'url' );
 
 	return apply_filters( 'opalestate_packages_get_packages_page_uri', $page );
+}
+
+function opalestate_packages_get_expired_time_units() {
+	return [
+		'day'   => esc_html__( 'Day', 'opalestate-packages' ),
+		'week'  => esc_html__( 'Week', 'opalestate-packages' ),
+		'month' => esc_html__( 'Month', 'opalestate-packages' ),
+		'year'  => esc_html__( 'Year', 'opalestate-packages' ),
+	];
 }
