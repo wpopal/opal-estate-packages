@@ -16,7 +16,7 @@ $units                   = opalestate_packages_get_expired_time_units();
     <div class="package-inner<?php if ( $product->is_highlighted() ): ?> package-hightlighted<?php endif; ?>">
         <div class="pricing pricing-v3">
             <div class="pricing-header" <?php echo wp_kses_post( $style ); ?>>
-                <span class="plan-subtitle hide"><?php esc_html_e( 'Recommend', 'opalestate-packages' ); ?></span>
+                <span class="plan-subtitle hide"><?php esc_html_e( 'Recommend', 'opal-estate-packages' ); ?></span>
 				<?php the_title( '<h4 class="plan-title">', '</h4>' ); ?>
                 <div class="plan-price">
 					<?php echo wp_kses_post( $product->get_price_html() ); ?>
@@ -55,7 +55,7 @@ $units                   = opalestate_packages_get_expired_time_units();
 					<?php
 					/* translators: %s: Name of current post */
 					the_content( sprintf(
-						esc_html__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'opalestate-packages' ),
+						esc_html__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'opal-estate-packages' ),
 						the_title( '<span class="screen-reader-text">', '</span>', false )
 					) );
 					?>

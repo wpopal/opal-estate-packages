@@ -90,7 +90,7 @@ class WooCommerce_Hook {
 	 */
 	public function woocommerce_checkout_process() {
 		if ( opalestate_packages_is_unlimited_purchased() ) {
-			throw new \Exception( sprintf( __( 'You have too limited to purchase this package, please try to purchase other.', 'opalestate-packages' ) ) );
+			throw new \Exception( sprintf( __( 'You have too limited to purchase this package, please try to purchase other.', 'opal-estate-packages' ) ) );
 		}
 	}
 

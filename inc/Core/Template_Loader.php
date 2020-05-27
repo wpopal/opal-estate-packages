@@ -20,13 +20,13 @@ class Template_Loader {
 		}
 
 		// Child theme
-		if ( ! $template && ! empty( $name ) && file_exists( get_stylesheet_directory() . "/opalestate-packages/{$name}.php" ) ) {
-			$template = get_stylesheet_directory() . "/opalestate-packages/{$name}.php";
+		if ( ! $template && ! empty( $name ) && file_exists( get_stylesheet_directory() . "/opal-estate-packages/{$name}.php" ) ) {
+			$template = get_stylesheet_directory() . "/opal-estate-packages/{$name}.php";
 		}
 
 		// Original theme
-		if ( ! $template && ! empty( $name ) && file_exists( get_template_directory() . "/opalestate-packages/{$name}.php" ) ) {
-			$template = get_template_directory() . "/opalestate-packages/{$name}.php";
+		if ( ! $template && ! empty( $name ) && file_exists( get_template_directory() . "/opal-estate-packages/{$name}.php" ) ) {
+			$template = get_template_directory() . "/opal-estate-packages/{$name}.php";
 		}
 
 		// Plugin

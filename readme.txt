@@ -1,11 +1,11 @@
 === Opal Estate Packages ===
-Contributors: wpopal
+Contributors: wpopal, ndoublehwp
 Donate link: http://www.wpopal.com/
 Tags:  community, member, opalestate_addon, profile, ecommerce, subscription, membership, user
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.2.3
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,7 +31,7 @@ Create estate membership packages as products. Seamlessly connects with Woocomme
 
 -=-=-=-=-=-=-=-=-=- Shortcodes -=-=-=-=-=-=-=-=-=-
 
-	- [opalestate_packages_collection] => show all packages
+- [opalestate_packages_collection] => show all packages
 
 = Manage Member Users Easily=
 
@@ -60,9 +60,4 @@ This section describes how to install the plugin and get it working.
 
 
 == Frequently Asked Questions ==
-
-* Detailed guide to install and customize: [documentation](http://www.wpopal.com/guides/plugin/opalestate-packages/ "Visit the Plugin docs")
-* Video guide and tutorials how to set up
-* Images and refer links
-* Easy for user to follow up
-* System tickets support 24/7 available : [free support](https://wpopal.ticksy.com/ "Visit the Plugin support Page")
+* System tickets support 24/7 available : [free support](https://themelexus.ticksy.com/ "Visit the Plugin support Page")

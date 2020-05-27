@@ -62,7 +62,7 @@ class Plugin {
 	 * Translations.
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'opalestate-packages', false, 'opal-estate-packages/languages' );
+		load_plugin_textdomain( 'opal-estate-packages', false, 'opal-estate-packages/languages' );
 	}
 
 	/**
@@ -71,10 +71,10 @@ class Plugin {
 	 */
 	public function rename_woocommerce( $args ) {
 		if ( apply_filters( 'opalestate_packages_rename_woocommerce', true ) ) {
-			$args['labels']['name']          = __( 'Packages', 'opalestate-packages' );
-			$args['labels']['singular_name'] = __( 'Package', 'opalestate-packages' );
-			$args['labels']['menu_name']     = _x( 'Packages', 'Admin menu name', 'opalestate-packages' );
-			$args['labels']['all_items']     = _x( 'All Packages', 'Admin menu name', 'opalestate-packages' );
+			$args['labels']['name']          = __( 'Packages', 'opal-estate-packages' );
+			$args['labels']['singular_name'] = __( 'Package', 'opal-estate-packages' );
+			$args['labels']['menu_name']     = _x( 'Packages', 'Admin menu name', 'opal-estate-packages' );
+			$args['labels']['all_items']     = _x( 'All Packages', 'Admin menu name', 'opal-estate-packages' );
 		}
 
 		return $args;

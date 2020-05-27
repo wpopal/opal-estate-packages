@@ -1,0 +1,410 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Opal Estate Packages\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-08 09:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.2; wp-5.3.2"
+
+#: templates/account/current-package.php:74
+msgid "Activion Date"
+msgstr ""
+
+#: inc/Plugin.php:77
+msgctxt "Admin menu name"
+msgid "All Packages"
+msgstr ""
+
+#: inc/Plugin.php:76
+msgctxt "Admin menu name"
+msgid "Packages"
+msgstr ""
+
+#: inc/Admin/Settings.php:27
+msgid "Allow set automatic a free package."
+msgstr ""
+
+#: inc/Admin/Metabox.php:102
+msgid ""
+"Check if set limited listings. Default: Unlimited listings. Notice: Enter "
+"Number Of Properties when set limited listings."
+msgstr ""
+
+#: templates/account/current-package.php:104
+#: templates/account/current-package.php:113
+msgid "Click to this link to see plans"
+msgstr ""
+
+#: templates/account/membership-warning.php:6
+#: templates/account/membership-warning.php:13
+#: templates/checkout/limited-purchased.php:4
+msgid "Click to this link to see plans."
+msgstr ""
+
+#. %s: Name of current post
+#: templates/content-package.php:58
+#, php-format
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: inc/Core/Handler.php:240
+msgid "Could not allow uploading image"
+msgstr ""
+
+#: templates/account/current-package.php:70
+msgid "Current Package"
+msgstr ""
+
+#: inc/functions.php:458
+msgid "Day"
+msgstr ""
+
+#: inc/Admin/Metabox.php:58
+msgid "Do you want enable expired date?"
+msgstr ""
+
+#: inc/Admin/Metabox.php:56
+msgid "Enable Expired Date"
+msgstr ""
+
+#: inc/Admin/Settings.php:26
+msgid "Enable Free Submission"
+msgstr ""
+
+#: inc/Admin/Metabox.php:78
+msgid "Enter expired date type. Example Day(s), Week(s), Month(s), Year(s)"
+msgstr ""
+
+#: inc/Admin/Metabox.php:28
+msgid "Estate Package"
+msgstr ""
+
+#: inc/Admin/Metabox.php:279 inc/Admin/Metabox.php:288
+msgid "Expired"
+msgstr ""
+
+#: inc/Admin/Metabox.php:63
+msgid "Expired After"
+msgstr ""
+
+#: inc/Admin/Metabox.php:77
+msgid "Expired Date Type"
+msgstr ""
+
+#: templates/account/current-package.php:75
+msgid "Expired On"
+msgstr ""
+
+#: inc/Admin/Settings.php:19
+msgid "Free Submission"
+msgstr ""
+
+#: inc/Admin/Metabox.php:86
+msgid "Highlighted"
+msgstr ""
+
+#: inc/Admin/Metabox.php:88
+msgid "Highlighted?"
+msgstr ""
+
+#. URI of the plugin
+msgid "http://www.wpopal.com/product/opal-estate-wordpress-plugin/"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"It's another solution for the Opal Membership plugin. Seamlessly connects "
+"with Woocommerce to benefit from all variety of Woocommerce extensions and "
+"payment gateways."
+msgstr ""
+
+#: templates/account/current-package.php:48
+msgid "Latest Payment"
+msgstr ""
+
+#: inc/Admin/Metabox.php:100
+msgid "Limited listing?"
+msgstr ""
+
+#: inc/Admin/Settings.php:47
+msgid "Maximum number of Free Featured that users can set."
+msgstr ""
+
+#: inc/Admin/Settings.php:37
+msgid "Maximum number of Free Listing that users can submit."
+msgstr ""
+
+#: inc/Admin/Metabox.php:43
+msgid "Maximum Purchased"
+msgstr ""
+
+#: templates/account/current-package.php:73
+msgid "Membership"
+msgstr ""
+
+#: inc/Admin/Metabox.php:248
+msgid "Membership Information"
+msgstr ""
+
+#: inc/Admin/Metabox.php:231
+msgid "Membership Package"
+msgstr ""
+
+#: inc/functions.php:460
+msgid "Month"
+msgstr ""
+
+#: inc/Core/Handler.php:290
+msgid "My Invoices"
+msgstr ""
+
+#: inc/Admin/Settings.php:101
+msgid "My Invoices page"
+msgstr ""
+
+#: inc/Core/Handler.php:283
+msgid "My Membership"
+msgstr ""
+
+#: inc/Admin/Settings.php:91
+msgid "My Membership page"
+msgstr ""
+
+#: inc/Admin/Settings.php:32
+msgid "No"
+msgstr ""
+
+#: inc/Admin/Settings.php:46
+msgid "Number Free Featured"
+msgstr ""
+
+#: inc/Admin/Settings.php:36
+msgid "Number Free Listing"
+msgstr ""
+
+#: inc/Admin/Metabox.php:120
+msgid "Number of Featured listings"
+msgstr ""
+
+#: inc/Admin/Metabox.php:266
+msgid "Number Of Featured Properties"
+msgstr ""
+
+#: inc/Admin/Metabox.php:107
+msgid "Number of listings"
+msgstr ""
+
+#: inc/Admin/Metabox.php:121
+msgid "Number of listings can make featured with this package."
+msgstr ""
+
+#: inc/Admin/Metabox.php:253
+msgid "Number Of Properties"
+msgstr ""
+
+#: inc/Admin/Metabox.php:275
+msgid "Number of properties can make featured with this package."
+msgstr ""
+
+#: inc/Admin/Metabox.php:262
+msgid ""
+"Number of properties with this package. If not set it will be unlimited."
+msgstr ""
+
+#. Name of the plugin
+msgid "Opal Estate Packages"
+msgstr ""
+
+#: opal-estate-packages.php:53
+#, php-format
+msgid ""
+"Opal Packages requires at least PHP version 5.6 to work, you are running "
+"version %s. Please contact to your administrator to upgrade PHP version!"
+msgstr ""
+
+#: opal-estate-packages.php:33
+#, php-format
+msgid ""
+"Opal Packages requires at least WordPress version 4.6, you are running "
+"version %s. Please upgrade and try again!"
+msgstr ""
+
+#: inc/Plugin.php:75 inc/Admin/Metabox.php:238
+msgid "Package"
+msgstr ""
+
+#: inc/Plugin.php:74 inc/Admin/Settings.php:67
+msgid "Packages"
+msgstr ""
+
+#: inc/Admin/Settings.php:81 inc/Admin/Settings.php:85
+msgid "Packages Settings"
+msgstr ""
+
+#: templates/account/current-package.php:56
+#, php-format
+msgid "Paid on %1$s @ %2$s"
+msgstr ""
+
+#: templates/account/current-package.php:51
+msgid "Payment ID"
+msgstr ""
+
+#: opal-estate-packages.php:84
+msgid ""
+"Please note that the <strong>Opal Packages</strong> plugin is meant to be "
+"used only with the <strong>Opal Estate Pro</strong> plugin.</p>"
+msgstr ""
+
+#: opal-estate-packages.php:90
+msgid ""
+"Please note that the <strong>Opal Packages</strong> plugin is meant to be "
+"used only with the <strong>WooCommerce</strong> plugin.</p>"
+msgstr ""
+
+#: opal-estate-packages.php:96
+msgid ""
+"Please note that the <strong>Opal Packages</strong> plugin is meant to be "
+"used only without the <strong>OpalMembership</strong> plugin. You should "
+"only choose 1 of 2.</p>"
+msgstr ""
+
+#: inc/functions.php:160
+msgid "Read More"
+msgstr ""
+
+#: templates/content-package.php:19
+msgid "Recommend"
+msgstr ""
+
+#: inc/Core/Handler.php:297
+msgid "Renew membership"
+msgstr ""
+
+#: inc/Admin/Settings.php:111
+msgid "Renew Membership page"
+msgstr ""
+
+#: inc/functions.php:160
+msgid "Select"
+msgstr ""
+
+#: inc/Admin/Metabox.php:44
+msgid "Set Maximum purchased for each user, Default: -1."
+msgstr ""
+
+#: inc/Admin/Metabox.php:247
+msgid "Set package ID with -1 as free package."
+msgstr ""
+
+#: inc/Admin/Metabox.php:284 inc/Admin/Metabox.php:292
+msgid "Show expired time in double format."
+msgstr ""
+
+#: templates/account/current-package.php:62
+msgid "Status"
+msgstr ""
+
+#: inc/Core/Handler.php:166
+msgid "Submission Information"
+msgstr ""
+
+#: inc/Admin/Metabox.php:108
+msgid ""
+"The number of listings an user can post with this package. If not set it "
+"will be unlimited."
+msgstr ""
+
+#: inc/Admin/Metabox.php:64
+msgid "The time that buyer can use this package. Use zero for unlimited time."
+msgstr ""
+
+#: inc/Admin/Settings.php:112
+msgid ""
+"This is the submission page. The <code>[opalestate_packages_collection]"
+"</code> shortcode should be on this page."
+msgstr ""
+
+#: inc/Admin/Settings.php:92
+msgid ""
+"This is the submission page. The <code>"
+"[opalestate_packages_user_current_package]</code> shortcode should be on "
+"this page."
+msgstr ""
+
+#: inc/Admin/Settings.php:102
+msgid ""
+"This is the submission page. The <code>[woocommerce_my_account]</code> "
+"shortcode should be on this page."
+msgstr ""
+
+#: templates/account/current-package.php:61
+msgid "Total"
+msgstr ""
+
+#: templates/account/current-package.php:94
+msgid "Update Now"
+msgstr ""
+
+#: templates/account/current-package.php:64
+msgid "View more payments"
+msgstr ""
+
+#: inc/functions.php:459
+msgid "Week"
+msgstr ""
+
+#: templates/account/current-package.php:92
+msgid "Would you like to upgrade your membership?"
+msgstr ""
+
+#. Author of the plugin
+msgid "WPOPAL"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "wpopal.com"
+msgstr ""
+
+#: inc/functions.php:461
+msgid "Year"
+msgstr ""
+
+#: inc/Admin/Settings.php:31
+msgid "Yes"
+msgstr ""
+
+#: templates/account/current-package.php:101
+#: templates/account/current-package.php:110
+msgid "You have not purchased any package now."
+msgstr ""
+
+#: inc/Core/WooCommerce_Hook.php:93 templates/checkout/limited-purchased.php:3
+msgid ""
+"You have too limited to purchase this package, please try to purchase other."
+msgstr ""
+
+#: inc/Core/Handler.php:164
+msgid ""
+"Your membership package is expired or Your package has 0 left listing, "
+"please upgrade now."
+msgstr ""
+
+#: templates/account/membership-warning.php:5
+msgid "Your membership package is expired please upgrade now"
+msgstr ""
+
+#: templates/account/membership-warning.php:12
+msgid ""
+"Your package has 0 left listing, you could not add any more. Please upgrade "
+"now"
+msgstr ""

@@ -7,9 +7,9 @@
  * Author URI:      wpopal.com
  * Text Domain:     opal-estate-packages
  * Domain Path:     /languages
- * Version:         1.0.2
+ * Version:         1.0.3
  * WC requires at least: 3.0.0
- * WC tested up to: 3.7
+ * WC tested up to: 3.9
  *
  * @package         Opalestate_Packages
  */
@@ -30,7 +30,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.6', '<' ) ) {
 	 * @global string $wp_version WordPress version.
 	 */
 	function opalestate_packages_wordpress_upgrade_notice() {
-		$message = sprintf( esc_html__( 'Opal Packages requires at least WordPress version 4.6, you are running version %s. Please upgrade and try again!', 'opal-packages' ),
+		$message = sprintf( esc_html__( 'Opal Packages requires at least WordPress version 4.6, you are running version %s. Please upgrade and try again!', 'opal-estate-packages' ),
 			$GLOBALS['wp_version'] );
 		printf( '<div class="error"><p>%s</p></div>', $message ); // WPCS: XSS OK.
 
@@ -51,7 +51,7 @@ if ( version_compare( phpversion(), '5.6', '<' ) ) {
 	 */
 	function opalestate_packages_php_upgrade_notice() {
 		$message = sprintf( esc_html__( 'Opal Packages requires at least PHP version 5.6 to work, you are running version %s. Please contact to your administrator to upgrade PHP version!',
-			'opal-packages'
+			'opal-estate-packages'
 		),
 			phpversion() );
 		printf( '<div class="error"><p>%s</p></div>', $message ); // WPCS: XSS OK.
@@ -68,7 +68,7 @@ if ( defined( 'OPALESTATE_PACKAGES_VERSION' ) ) {
 	return;
 }
 
-define( 'OPALESTATE_PACKAGES_VERSION', '1.0.2' );
+define( 'OPALESTATE_PACKAGES_VERSION', '1.0.3' );
 define( 'OPALESTATE_PACKAGES_USER_PREFIX', 'opalmb_' );
 define( 'OPALESTATE_PACKAGES_PAYMENT_PREFIX', 'opalmembership_payment_' );
 define( 'OPALESTATE_PACKAGES_PACKAGES_PREFIX', 'opalestate_package_' );
@@ -81,20 +81,20 @@ define( 'OPALESTATE_PACKAGES_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 function opalestate_packages_admin_notice() {
 	if ( ! class_exists( 'OpalEstate' ) ) {
 		echo '<div class="error">';
-		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only with the <strong>Opal Estate Pro</strong> plugin.</p>', 'opal-packages' );
+		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only with the <strong>Opal Estate Pro</strong> plugin.</p>', 'opal-estate-packages' );
 		echo '</div>';
 	}
 
 	if ( ! class_exists( 'WooCommerce' ) ) {
 		echo '<div class="error">';
-		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only with the <strong>WooCommerce</strong> plugin.</p>', 'opal-packages' );
+		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only with the <strong>WooCommerce</strong> plugin.</p>', 'opal-estate-packages' );
 		echo '</div>';
 	}
 
 	if ( class_exists( 'OpalMembership' ) ) {
 		echo '<div class="error">';
 		echo '<p>' . __( 'Please note that the <strong>Opal Packages</strong> plugin is meant to be used only without the <strong>OpalMembership</strong> plugin. You should only choose 1 of 2.</p>',
-				'opal-packages' );
+				'opal-estate-packages' );
 		echo '</div>';
 	}
 }
@@ -114,6 +114,7 @@ add_action( 'plugins_loaded', function () {
 		require_once dirname( __FILE__ ) . '/loader.php';
 
 		$GLOBALS['opalestate_packages'] = Opalestate_Packages::get_instance();
+		load_plugin_textdomain( 'opal-estate-packages', false, 'opal-estate-packages/languages' );
 	}
 	add_action( 'admin_notices', 'opalestate_packages_admin_notice', 4 );
 } );

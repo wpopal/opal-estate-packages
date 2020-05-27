@@ -45,34 +45,34 @@ if ( $package_id ) :
 		?>
         <div class="opalmembership-box">
             <div class="panel-body">
-                <h3><?php esc_html_e( 'Latest Payment', 'opalestate-packages' ); ?></h3>
+                <h3><?php esc_html_e( 'Latest Payment', 'opal-estate-packages' ); ?></h3>
                 <ul class="list-group">
                     <li>
-                        <span><?php esc_html_e( 'Payment ID', 'opalestate-packages' ); ?></span>: <a href="<?php echo esc_url( $actions['url'] ); ?>">
+                        <span><?php esc_html_e( 'Payment ID', 'opal-estate-packages' ); ?></span>: <a href="<?php echo esc_url( $actions['url'] ); ?>">
 							<?php echo absint( $payment->get_id() ); ?></a>
                     </li>
                     <li>
 						<?php printf(
-							__( 'Paid on %1$s @ %2$s', 'opalestate-packages' ),
+							__( 'Paid on %1$s @ %2$s', 'opal-estate-packages' ),
 							wc_format_datetime( $payment->get_date_paid() ),
 							wc_format_datetime( $payment->get_date_paid(), get_option( 'time_format' ) )
 						); ?>
                     </li>
-                    <li><span><?php esc_html_e( 'Total', 'opalestate-packages' ); ?></span>: <strong><?php echo wp_kses_post( $payment->get_formatted_order_total() ); ?></strong></li>
-                    <li><span><?php esc_html_e( 'Status', 'opalestate-packages' ); ?></span>: <?php echo esc_html( wc_get_order_status_name( $payment->get_status() ) ); ?></li>
+                    <li><span><?php esc_html_e( 'Total', 'opal-estate-packages' ); ?></span>: <strong><?php echo wp_kses_post( $payment->get_formatted_order_total() ); ?></strong></li>
+                    <li><span><?php esc_html_e( 'Status', 'opal-estate-packages' ); ?></span>: <?php echo esc_html( wc_get_order_status_name( $payment->get_status() ) ); ?></li>
                 </ul>
-                <p><a href="<?php echo esc_url( opalestate_packages_get_history_page_uri() ); ?>" class="btn btn-link"><?php esc_html_e( 'View more payments', 'opalestate-packages' ); ?></a></p>
+                <p><a href="<?php echo esc_url( opalestate_packages_get_history_page_uri() ); ?>" class="btn btn-link"><?php esc_html_e( 'View more payments', 'opal-estate-packages' ); ?></a></p>
             </div>
         </div>
 
         <div class="opalmembership-box">
             <div class="panel-body">
-                <h3><?php esc_html_e( 'Current Package', 'opalestate-packages' ); ?></h3>
+                <h3><?php esc_html_e( 'Current Package', 'opal-estate-packages' ); ?></h3>
                 <div class="membership-content">
                     <ul class="list-group">
-                        <li><span><?php esc_html_e( 'Membership', 'opalestate-packages' ); ?></span>: <?php echo esc_html( $package->get_title() ); ?> </li>
-                        <li><span><?php esc_html_e( 'Activion Date', 'opalestate-packages' ); ?></span>: <?php echo esc_html( $package_activation ); ?></li>
-                        <li><span><?php esc_html_e( 'Expired On', 'opalestate-packages' ); ?></span>: <?php echo esc_html( $package_expired ); ?></li>
+                        <li><span><?php esc_html_e( 'Membership', 'opal-estate-packages' ); ?></span>: <?php echo esc_html( $package->get_title() ); ?> </li>
+                        <li><span><?php esc_html_e( 'Activion Date', 'opal-estate-packages' ); ?></span>: <?php echo esc_html( $package_activation ); ?></li>
+                        <li><span><?php esc_html_e( 'Expired On', 'opal-estate-packages' ); ?></span>: <?php echo esc_html( $package_expired ); ?></li>
 						<?php if ( $unlimited_listings == 1 && $package_id > 0 ) : ?>
                             <li><span><?php esc_html_e( '(Package) Listings Included:', 'opalestate-pro' ); ?></span><?php esc_html_e( 'Unlimited', 'opalestate-pro' ) ?></span></li>
                             <li><span><?php esc_html_e( '(Package) Featured Included:', 'opalestate-pro' ); ?></span><?php esc_html_e( 'Unlimited', 'opalestate-pro' ) ?></li>
@@ -89,28 +89,28 @@ if ( $package_id ) :
                     </ul>
                 </div>
                 <p>
-					<?php esc_html_e( 'Would you like to upgrade your membership?', 'opalestate-packages' ); ?>
+					<?php esc_html_e( 'Would you like to upgrade your membership?', 'opal-estate-packages' ); ?>
                     <a class="btn btn-primary" href="<?php echo esc_url( opalestate_packages_get_packages_page_uri() ); ?>">
-						<?php esc_html_e( 'Update Now', 'opalestate-packages' ); ?>
+						<?php esc_html_e( 'Update Now', 'opal-estate-packages' ); ?>
                     </a>
                 </p>
             </div>
         </div>
     <?php else : ?>
         <div class="alert alert-warning">
-            <p><?php esc_html_e( 'You have not purchased any package now.', 'opalestate-packages' ); ?></p>
+            <p><?php esc_html_e( 'You have not purchased any package now.', 'opal-estate-packages' ); ?></p>
             <p>
                 <a href="<?php echo opalestate_packages_get_packages_page_uri(); ?>" class="btn btn-primary">
-					<?php esc_html_e( 'Click to this link to see plans', 'opalestate-packages' ); ?></a>
+					<?php esc_html_e( 'Click to this link to see plans', 'opal-estate-packages' ); ?></a>
             </p>
         </div>
 	<?php endif; ?>
 <?php else : ?>
     <div class="alert alert-warning">
-        <p><?php esc_html_e( 'You have not purchased any package now.', 'opalestate-packages' ); ?></p>
+        <p><?php esc_html_e( 'You have not purchased any package now.', 'opal-estate-packages' ); ?></p>
         <p>
             <a href="<?php echo opalestate_packages_get_packages_page_uri(); ?>" class="btn btn-primary">
-				<?php esc_html_e( 'Click to this link to see plans', 'opalestate-packages' ); ?></a>
+				<?php esc_html_e( 'Click to this link to see plans', 'opal-estate-packages' ); ?></a>
         </p>
     </div>
 <?php endif; ?>

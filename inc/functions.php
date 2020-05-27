@@ -157,7 +157,7 @@ function opalestate_packages_add_product_type() {
 		}
 
 		public function add_to_cart_text() {
-			$text = $this->is_purchasable() && $this->is_in_stock() ? esc_html__( 'Select', 'opal-packages' ) : esc_html__( 'Read More', 'opal-packages' );
+			$text = $this->is_purchasable() && $this->is_in_stock() ? esc_html__( 'Select', 'opal-estate-packages' ) : esc_html__( 'Read More', 'opal-estate-packages' );
 
 			return apply_filters( 'opalestate_packages_product_add_to_cart_text', $text, $this );
 		}
@@ -455,9 +455,9 @@ function opalestate_packages_get_packages_page_uri() {
 
 function opalestate_packages_get_expired_time_units() {
 	return [
-		'day'   => esc_html__( 'Day', 'opalestate-packages' ),
-		'week'  => esc_html__( 'Week', 'opalestate-packages' ),
-		'month' => esc_html__( 'Month', 'opalestate-packages' ),
-		'year'  => esc_html__( 'Year', 'opalestate-packages' ),
+		'day'   => esc_html__( 'Day', 'opal-estate-packages' ),
+		'week'  => esc_html__( 'Week', 'opal-estate-packages' ),
+		'month' => esc_html__( 'Month', 'opal-estate-packages' ),
+		'year'  => esc_html__( 'Year', 'opal-estate-packages' ),
 	];
 }

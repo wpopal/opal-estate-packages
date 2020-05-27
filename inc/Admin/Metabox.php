@@ -25,7 +25,7 @@ class Metabox {
 	 * @return mixed
 	 */
 	public function product_type_selector( $types ) {
-		$types['opalestate_package'] = esc_html__( 'Estate Package', 'opalestate-packages' );
+		$types['opalestate_package'] = esc_html__( 'Estate Package', 'opal-estate-packages' );
 
 		return $types;
 	}
@@ -40,8 +40,8 @@ class Metabox {
 			<?php
 			woocommerce_wp_text_input( [
 				'id'                => 'opalestate_package_maximum_purchased',
-				'label'             => esc_html__( 'Maximum Purchased', 'opalestate-packages' ),
-				'description'       => esc_html__( 'Set Maximum purchased for each user, Default: -1.', 'opalestate-packages' ),
+				'label'             => esc_html__( 'Maximum Purchased', 'opal-estate-packages' ),
+				'description'       => esc_html__( 'Set Maximum purchased for each user, Default: -1.', 'opal-estate-packages' ),
 				'value'             => max( get_post_meta( $post->ID, 'opalestate_package_maximum_purchased', true ), -1 ),
 				'type'              => 'number',
 				'desc_tip'          => true,
@@ -53,15 +53,15 @@ class Metabox {
 
 			woocommerce_wp_checkbox( [
 				'id'          => 'opalestate_package_enable_expired',
-				'label'       => esc_html__( 'Enable Expired Date', 'opalestate-packages' ),
+				'label'       => esc_html__( 'Enable Expired Date', 'opal-estate-packages' ),
 				'value'       => get_post_meta( $post->ID, 'opalestate_package_enable_expired', true ),
-				'description' => esc_html__( 'Do you want enable expired date?', 'opalestate-packages' ),
+				'description' => esc_html__( 'Do you want enable expired date?', 'opal-estate-packages' ),
 			] );
 
 			woocommerce_wp_text_input( [
 				'id'                => 'opalestate_package_duration',
-				'label'             => esc_html__( 'Expired After', 'opalestate-packages' ),
-				'description'       => esc_html__( 'The time that buyer can use this package. Use zero for unlimited time.', 'opalestate-packages' ),
+				'label'             => esc_html__( 'Expired After', 'opal-estate-packages' ),
+				'description'       => esc_html__( 'The time that buyer can use this package. Use zero for unlimited time.', 'opal-estate-packages' ),
 				'value'             => max( get_post_meta( $post->ID, 'opalestate_package_duration', true ), 0 ),
 				'placeholder'       => '',
 				'type'              => 'number',
@@ -74,8 +74,8 @@ class Metabox {
 
 			woocommerce_wp_select( [
 				'id'          => 'opalestate_package_duration_unit',
-				'label'       => esc_html__( 'Expired Date Type', 'opalestate-packages' ),
-				'description' => esc_html__( 'Enter expired date type. Example Day(s), Week(s), Month(s), Year(s)', 'opalestate-packages' ),
+				'label'       => esc_html__( 'Expired Date Type', 'opal-estate-packages' ),
+				'description' => esc_html__( 'Enter expired date type. Example Day(s), Week(s), Month(s), Year(s)', 'opal-estate-packages' ),
 				'placeholder' => '',
 				'desc_tip'    => true,
 				'options'     => opalestate_packages_get_expired_time_units(),
@@ -83,29 +83,29 @@ class Metabox {
 
 			woocommerce_wp_checkbox( [
 				'id'          => 'opalestate_package_hightlighted',
-				'label'       => esc_html__( 'Highlighted', 'opalestate-packages' ),
+				'label'       => esc_html__( 'Highlighted', 'opal-estate-packages' ),
 				'value'       => get_post_meta( $post->ID, 'opalestate_package_hightlighted', true ),
-				'description' => esc_html__( 'Highlighted?', 'opalestate-packages' ),
+				'description' => esc_html__( 'Highlighted?', 'opal-estate-packages' ),
 			] );
 
 			// woocommerce_wp_checkbox( [
 			// 	'id'          => 'opalestate_package_recurring',
-			// 	'label'       => esc_html__( 'Recurring', 'opalestate-packages' ),
+			// 	'label'       => esc_html__( 'Recurring', 'opal-estate-packages' ),
 			// 	'value'       => get_post_meta( $post->ID, 'opalestate_package_recurring', true ),
-			// 	'description' => esc_html__( 'Do you want enable recurring?', 'opalestate-packages' ),
+			// 	'description' => esc_html__( 'Do you want enable recurring?', 'opal-estate-packages' ),
 			// ] );
 
 			woocommerce_wp_checkbox( [
 				'id'          => 'opalestate_package_unlimited_listings',
-				'label'       => esc_html__( 'Limited listing?', 'opalestate-packages' ),
+				'label'       => esc_html__( 'Limited listing?', 'opal-estate-packages' ),
 				'value'       => get_post_meta( $post->ID, 'opalestate_package_unlimited_listings', true ),
-				'description' => esc_html__( 'Check if set limited listings. Default: Unlimited listings. Notice: Enter Number Of Properties when set limited listings.', 'opalestate-packages' ),
+				'description' => esc_html__( 'Check if set limited listings. Default: Unlimited listings. Notice: Enter Number Of Properties when set limited listings.', 'opal-estate-packages' ),
 			] );
 
 			woocommerce_wp_text_input( [
 				'id'                => 'opalestate_package_package_listings',
-				'label'             => esc_html__( 'Number of listings', 'opalestate-packages' ),
-				'description'       => esc_html__( 'The number of listings an user can post with this package. If not set it will be unlimited.', 'opalestate-packages' ),
+				'label'             => esc_html__( 'Number of listings', 'opal-estate-packages' ),
+				'description'       => esc_html__( 'The number of listings an user can post with this package. If not set it will be unlimited.', 'opal-estate-packages' ),
 				'value'             => max( get_post_meta( $post->ID, 'opalestate_package_package_listings', true ), 0 ),
 				'type'              => 'number',
 				'desc_tip'          => true,
@@ -117,8 +117,8 @@ class Metabox {
 
 			woocommerce_wp_text_input( [
 				'id'                => 'opalestate_package_package_featured_listings',
-				'label'             => esc_html__( 'Number of Featured listings', 'opalestate-packages' ),
-				'description'       => esc_html__( 'Number of listings can make featured with this package.', 'opalestate-packages' ),
+				'label'             => esc_html__( 'Number of Featured listings', 'opal-estate-packages' ),
+				'description'       => esc_html__( 'Number of listings can make featured with this package.', 'opal-estate-packages' ),
 				'value'             => max( get_post_meta( $post->ID, 'opalestate_package_package_featured_listings', true ), -1 ),
 				'placeholder'       => '',
 				'desc_tip'          => true,
@@ -228,14 +228,14 @@ class Metabox {
 		 */
 		$cmb_user = new_cmb2_box( [
 			'id'               => $prefix . 'package',
-			'title'            => esc_html__( 'Membership Package', 'opalestate-packages' ), // Doesn't output for user boxes
+			'title'            => esc_html__( 'Membership Package', 'opal-estate-packages' ), // Doesn't output for user boxes
 			'object_types'     => [ 'user' ], // Tells CMB2 to use user_meta vs post_meta
 			'show_names'       => true,
 			'new_user_section' => 'add-new-user', // where form will show on new user page. 'add-existing-user' is only other valid option.
 		] );
 
 		$fields[] = [
-			'name'        => esc_html__( 'Package', 'opalestate-packages' ),
+			'name'        => esc_html__( 'Package', 'opal-estate-packages' ),
 			'id'          => $prefix . 'package_id',
 			'type'        => 'text',
 			'attributes'  => [
@@ -244,13 +244,13 @@ class Metabox {
 				'min'     => 0,
 			],
 			'std'         => '1',
-			'description' => esc_html__( 'Set package ID with -1 as free package.', 'opalestate-packages' ),
-			'before_row'  => '<hr><h3> ' . __( 'Membership Information', 'opalestate-packages' ) . ' </h3>',
+			'description' => esc_html__( 'Set package ID with -1 as free package.', 'opal-estate-packages' ),
+			'before_row'  => '<hr><h3> ' . __( 'Membership Information', 'opal-estate-packages' ) . ' </h3>',
 		];
 
 
 		$fields[] = [
-			'name'        => esc_html__( 'Number Of Properties', 'opalestate-packages' ),
+			'name'        => esc_html__( 'Number Of Properties', 'opal-estate-packages' ),
 			'id'          => $prefix . 'package_listings',
 			'type'        => 'text',
 			'attributes'  => [
@@ -259,11 +259,11 @@ class Metabox {
 				'min'     => 0,
 			],
 			'std'         => '1',
-			'description' => esc_html__( 'Number of properties with this package. If not set it will be unlimited.', 'opalestate-packages' ),
+			'description' => esc_html__( 'Number of properties with this package. If not set it will be unlimited.', 'opal-estate-packages' ),
 		];
 
 		$fields[] = [
-			'name'        => esc_html__( 'Number Of Featured Properties', 'opalestate-packages' ),
+			'name'        => esc_html__( 'Number Of Featured Properties', 'opal-estate-packages' ),
 			'id'          => $prefix . 'package_featured_listings',
 			'type'        => 'text',
 			'attributes'  => [
@@ -272,24 +272,24 @@ class Metabox {
 				'min'     => 0,
 			],
 			'std'         => '1',
-			'description' => esc_html__( 'Number of properties can make featured with this package.', 'opalestate-packages' ),
+			'description' => esc_html__( 'Number of properties can make featured with this package.', 'opal-estate-packages' ),
 		];
 
 		$fields[] = [
-			'name'        => esc_html__( 'Expired', 'opalestate-packages' ),
+			'name'        => esc_html__( 'Expired', 'opal-estate-packages' ),
 			'id'          => $prefix . 'package_expired_date',
 			'type'        => 'text_date',
 			'default'     => $date,
 			'std'         => '1',
-			'description' => esc_html__( 'Show expired time in double format.', 'opalestate-packages' ),
+			'description' => esc_html__( 'Show expired time in double format.', 'opal-estate-packages' ),
 		];
 
 		$fields[] = [
-			'name'        => esc_html__( 'Expired', 'opalestate-packages' ),
+			'name'        => esc_html__( 'Expired', 'opal-estate-packages' ),
 			'id'          => $prefix . 'package_expired',
 			'type'        => 'text',
 			'std'         => '1',
-			'description' => esc_html__( 'Show expired time in double format.', 'opalestate-packages' ),
+			'description' => esc_html__( 'Show expired time in double format.', 'opal-estate-packages' ),
 		];
 
 		foreach ( $fields as $field ) {

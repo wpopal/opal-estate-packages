@@ -161,9 +161,9 @@ class Handler {
 		if ( ! $check ) {
 
 			return opalestate_output_msg_json( true,
-				__( 'Your membership package is expired or Your package has 0 left listing, please upgrade now.', 'opalestate-packages' ),
+				__( 'Your membership package is expired or Your package has 0 left listing, please upgrade now.', 'opal-estate-packages' ),
 				[
-					'heading'  => esc_html__( 'Submission Information', 'opalestate-packages' ),
+					'heading'  => esc_html__( 'Submission Information', 'opal-estate-packages' ),
 					'redirect' => opalestate_packages_get_membership_page_uri(),
 				] );
 		}
@@ -237,7 +237,7 @@ class Handler {
 		if ( ! $check || ! $has ) {
 			$std          = new stdClass();
 			$std->status  = false;
-			$std->message = esc_html__( 'Could not allow uploading image', 'opalestate-packages' );
+			$std->message = esc_html__( 'Could not allow uploading image', 'opal-estate-packages' );
 			echo json_encode( $std );
 			exit();
 		}
@@ -280,21 +280,21 @@ class Handler {
 		$menu['membership'] = [
 			'icon'  => 'fa fa-user',
 			'link'  => opalestate_packages_get_current_package_page_uri(),
-			'title' => esc_html__( 'My Membership', 'opalestate-packages' ),
+			'title' => esc_html__( 'My Membership', 'opal-estate-packages' ),
 			'id'    => 0,
 		];
 
 		$menu['membership_history'] = [
 			'icon'  => 'fa fa-user',
 			'link'  => opalestate_packages_get_history_page_uri(),
-			'title' => esc_html__( 'My Invoices', 'opalestate-packages' ),
+			'title' => esc_html__( 'My Invoices', 'opal-estate-packages' ),
 			'id'    => 0,
 		];
 
 		$menu['packages'] = [
 			'icon'  => 'fa fa-certificate',
 			'link'  => opalestate_packages_get_packages_page_uri(),
-			'title' => esc_html__( 'Renew membership', 'opalestate-packages' ),
+			'title' => esc_html__( 'Renew membership', 'opal-estate-packages' ),
 			'id'    => 0,
 		];
 
