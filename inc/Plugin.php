@@ -39,6 +39,13 @@ class Plugin {
 
 		add_action( 'plugins_loaded', [ $this, 'i18n' ], 3 );
 		add_filter( 'woocommerce_register_post_type_product', [ $this, 'rename_woocommerce' ], 3 );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+	}
+
+	public function enqueue_styles() {
+		if ( function_exists( 'is_checkout' ) && is_checkout() ) {
+			wp_enqueue_style( 'opalestate-package-checkout', OPALESTATE_PACKAGES_PLUGIN_URL . 'assets/css/checkout.css', [], OPALESTATE_PACKAGES_VERSION );
+		}
 	}
 
 	/**
