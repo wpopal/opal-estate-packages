@@ -277,25 +277,29 @@ class Handler {
 	 * Hook Method to add more link for user management
 	 */
 	public function membership_menu( $menu ) {
+		if ( ! function_exists( 'opalestate_get_option' ) ) {
+			return $menu;
+		}
+
 		$menu['membership'] = [
 			'icon'  => 'fa fa-user',
 			'link'  => opalestate_packages_get_current_package_page_uri(),
 			'title' => esc_html__( 'My Membership', 'opal-estate-packages' ),
-			'id'    => 0,
+			'id'    => opalestate_get_option( 'packages_my_membership_page' ),
 		];
 
 		$menu['membership_history'] = [
 			'icon'  => 'fa fa-user',
 			'link'  => opalestate_packages_get_history_page_uri(),
 			'title' => esc_html__( 'My Invoices', 'opal-estate-packages' ),
-			'id'    => 0,
+			'id'    => opalestate_get_option( 'packages_my_invoices_page' ),
 		];
 
 		$menu['packages'] = [
 			'icon'  => 'fa fa-certificate',
 			'link'  => opalestate_packages_get_packages_page_uri(),
 			'title' => esc_html__( 'Renew membership', 'opal-estate-packages' ),
-			'id'    => 0,
+			'id'    => opalestate_get_option( 'packages_renew_membership_page' ),
 		];
 
 		return $menu;
